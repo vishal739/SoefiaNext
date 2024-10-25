@@ -8,29 +8,28 @@ const lessons = [
     classname: "Algebra I, Block A",
     lessonGoal: "Standard Deviations",
     keyConcept: "Understanding standard deviation",
-    lessonNotesLink: "/lesson-notes/4-oct-24",
+    lessonNotesLink: "120012",
   },
-
   {
     noteDate: "5 Oct 24",
     classname: "Geometry, Block B",
     lessonGoal: "Triangles",
     keyConcept: "Properties of triangles",
-    lessonNotesLink: "/lesson-notes/5-oct-24",
+    lessonNotesLink: "120012",
   },
   {
     noteDate: "6 Oct 24",
     classname: "Calculus, Block C",
     lessonGoal: "Derivatives",
     keyConcept: "Understanding derivatives",
-    lessonNotesLink: "/lesson-notes/6-oct-24",
+    lessonNotesLink: "120012",
   },
   {
     noteDate: "7 Oct 24",
     classname: "Physics, Block D",
     lessonGoal: "Newton's Laws",
     keyConcept: "Newton's three laws of motion",
-    lessonNotesLink: "/lesson-notes/7-oct-24",
+    lessonNotesLink: "120012",
   },
 ];
 
