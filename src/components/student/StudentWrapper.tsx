@@ -6,11 +6,26 @@ import SmallLayout from "./Layout/SmallLayout";
 import StudentHomePage from "./pages/StudentHomePage";
 import StudentLessonPlanPage from "./pages/StudentLessonPlanPage";
 import { useSearchParams } from "next/navigation";
+import LessonNotesPage from "./components/LessonNotes/LessonNotesPage";
+import MediumLayout from "./Layout/MediumLayout";
 
 const main_pages = [
   <StudentHomePage key="home" />,
   <StudentLessonPlanPage key="lesson" />,
 ];
+
+function returnContent(page: string, lessonId?: string): React.JSX.Element {
+  switch (page) {
+    case "home":
+      return main_pages[0];
+    case "lesson":
+      return main_pages[1];
+    case "lesson-notes":
+      return <LessonNotesPage lessonId={lessonId ?? ""} />;
+    default:
+      return main_pages[0];
+  }
+}
 
 export default function StudentWrapper() {
   const width = usePageWidth();
@@ -19,14 +34,10 @@ export default function StudentWrapper() {
 
   if (width > 1200) {
     return (
-      <LargeLayout
-        selectedMainPage={
-          selectedPage === "home" ? main_pages[0] : main_pages[1]
-        }
-      />
+      <LargeLayout selectedMainPage={returnContent(selectedPage ?? "home")} />
     );
   } else if (width > 900) {
-    return <div>MediumLayout</div>;
+    return <MediumLayout />;
   } else {
     return <SmallLayout />;
   }
