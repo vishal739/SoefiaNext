@@ -11,7 +11,7 @@ const lessons = [
     lessonDate: "Today",
     classname: "Algebra I, Block A",
     topic: "Writing Equations to Model Relationships",
-    launchLessonLink: "/launch-lesson/7-mon-a",
+    launchLessonLink: "/students/live-lesson/7-mon-a",
   },
   {
     day: "7",
@@ -19,7 +19,7 @@ const lessons = [
     lessonDate: "Today",
     classname: "Algebra I, Block B",
     topic: "Writing Equations to Model Relationships",
-    launchLessonLink: "/launch-lesson/7-mon-b",
+    launchLessonLink: "/students/live-lesson/7-mon-a",
   },
   {
     day: "9",
@@ -27,7 +27,7 @@ const lessons = [
     lessonDate: "Today",
     classname: "Algebra I, Block E",
     topic: "Writing Equations to Model Relationships",
-    launchLessonLink: "/launch-lesson/7-mon-e",
+    launchLessonLink: "/students/live-lesson/7-mon-a",
   },
   {
     day: "8",
@@ -35,7 +35,7 @@ const lessons = [
     lessonDate: "Today",
     classname: "Algebra I, Block E",
     topic: "Writing Equations to Model Relationships",
-    launchLessonLink: "/launch-lesson/7-mon-e",
+    launchLessonLink: "/students/live-lesson/7-mon-a",
   },
   {
     day: "3",
@@ -43,7 +43,7 @@ const lessons = [
     lessonDate: "Today",
     classname: "Algebra I, Block E",
     topic: "Writing Equations to Model Relationships",
-    launchLessonLink: "/launch-lesson/7-mon-e",
+    launchLessonLink: "/students/live-lesson/7-mon-a",
   },
 ];
 

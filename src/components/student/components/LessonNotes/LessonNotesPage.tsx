@@ -161,7 +161,9 @@ const FeedbackSection: React.FC = () => {
   );
 };
 
-// Mock data - In real application, this would come from an API or props
+
+
+/// get this from api
 const mockLessonData: LessonData = {
   className: "Algebra I, Block A",
   lessonName: "Standard Deviation",
@@ -211,9 +213,7 @@ const mockLessonData: LessonData = {
   ],
 };
 
-// Main Component
 const LessonNotesPage: React.FC<Props> = ({ lessonId }) => {
-  // In a real application, you would fetch the lesson data here using the lessonId
   const lessonData = mockLessonData;
 
   const router = useRouter();
