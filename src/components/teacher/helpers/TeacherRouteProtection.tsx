@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function StudentRouteProtection({
+export default function TeacherRouteProtection({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -10,12 +10,11 @@ export default function StudentRouteProtection({
   const router = useRouter();
   const page = useSearchParams().get("page");
 
-
-// TO:DO add logic for keeping or removing users from the students route
+// TO:DO add logic for keeping or removing users from the teachers route
 
   useEffect(() => {
     if (!page) {
-      router.push("/students?page=home");
+      router.push("/teacher?page=lessons");
     }
   }, [router]);
   return <section>{children}</section>;
