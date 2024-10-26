@@ -1,7 +1,10 @@
 import React from 'react'
+import ClassesInnerView from '../components/Classes/ClassesInnerView'
 
 export default function TClasses() {
   return (
-    <div>TClasses</div>
+    <div className='w-full'>
+      <ClassesInnerView/>
+    </div>
   )
 }
