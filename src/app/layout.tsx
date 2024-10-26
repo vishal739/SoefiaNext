@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { HelpCircle } from "lucide-react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const poppinsFont = Poppins({
   subsets: ["latin"],
@@ -23,6 +25,18 @@ export default function RootLayout({
       <body
         className={`${poppinsFont.className} antialiased  bg-backround  relative`}
       >
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
         {children}
         <div className="fixed right-6 bottom-16 bg-[#FFEDD8] rounded-lg text-[#B35E01] z-20 cursor-pointer flex items-center justify-center gap-2 px-4 py-3 shadow-md text-sm">
           <HelpCircle /> help
