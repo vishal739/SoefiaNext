@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { ChevronDown, Copy, Edit2Icon, List, Play, Search, Square } from "lucide-react";
+import { ChevronDown, Copy, Edit2Icon, Grid2X2, List, Play, Search, Square } from "lucide-react";
 import { camelCaseToTwoLetters } from "@/lib/formatter/camelCaseToTwoLetters";
 
 interface LessonCardProps {
@@ -249,7 +249,7 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
               className="text-primary px-4 py-2 flex items-center gap-2 rounded-md border text-sm font-semibol"
               onClick={() => setViewType(viewType === "grid" ? "list" : "grid")}
             >
-              Show as {viewType === "grid" ? "list" : "cards"} {viewType==="list"?<Square/>:<List/>}
+            {viewType==="list"?<Grid2X2 size={14}/>:<List size={14}/>}  Show as {viewType === "grid" ? "list" : "cards"} 
             </button>
           </div>
         </div>
