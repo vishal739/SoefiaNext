@@ -50,7 +50,10 @@ const MemoryLogItem: React.FC<MemoryLogItemProps> = ({ date, topic }) => (
   </div>
 );
 
-export default function ClassesInnerView() {
+interface Props {
+  classId: string;
+}
+export default function ClassesInnerView({ classId }: Props) {
   const memoryLogs = [
     { date: "4 Oct 24", topic: "Standard Deviations" },
     { date: "3 Oct 24", topic: "Comparing and Contrasting Data Distributions" },
@@ -136,61 +139,63 @@ export default function ClassesInnerView() {
         </CardContent>
       </Card>
 
-      {/* Automatic Review Section */}
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-4">
-          <h2 className="font-semibold">Automatic review</h2>
-          <Switch />
-          <span>On</span>
-        </div>
-        <div className="relative">
-          <Search
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-            size={16}
-          />
-          <input
-            type="text"
-            placeholder="Search"
-            className="pl-10 pr-4 py-2 border rounded-lg"
-          />
-        </div>
-      </div>
-      <Textarea placeholder="Type your note" />
-
-      {/* Lessons Section */}
-      <div className="flex flex-col gap-4">
-        <h2 className="font-semibold mb-4">Lessons</h2>
-        <div className="space-y-4">
-          <div>
-            <h3 className="text-sm font-medium mb-2">Upcoming</h3>
-            <div className="space-y-2">
-              {upcomingLessons.map((lesson, index) => (
-                <LessonCardHorizontal key={index} {...lesson} />
-              ))}
-            </div>
+      <div className="bg-white p-6 flex flex-col gap-2 rounded-lg">
+        {/* Automatic Review Section */}
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-4">
+            <h2 className="font-semibold">Automatic review</h2>
+            <Switch />
+            <span>On</span>
+          </div>
+          <div className="relative">
+            <Search
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              size={16}
+            />
+            <input
+              type="text"
+              placeholder="Search"
+              className="pl-10 pr-4 py-2 border rounded-lg"
+            />
           </div>
         </div>
-        <Button
-          variant="link"
-          className="mt-4 w-fit px-4 py-2 rounded-lg border text-primary"
-        >
-          See upcoming lessons
-        </Button>
+        <Textarea placeholder="Type your note" />
 
-        <div className="space-y-4">
-          <div>
-            <h3 className="text-sm font-medium mb-2">Recently Completed</h3>
-            <div className="space-y-2">
-              {upcomingLessons.map((lesson, index) => (
-                <LessonCardHorizontal key={index} {...lesson} />
-              ))}
+        {/* Lessons Section */}
+        <div className="flex flex-col gap-4">
+          <h2 className="font-semibold mb-4">Lessons</h2>
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-sm font-medium mb-2">Upcoming</h3>
+              <div className="space-y-2">
+                {upcomingLessons.map((lesson, index) => (
+                  <LessonCardHorizontal key={index} {...lesson} />
+                ))}
+              </div>
             </div>
-            <Button
-              variant="link"
-              className="mt-4 w-fit px-4 py-2 rounded-lg border text-primary"
-            >
-              See recently completed lessons
-            </Button>
+          </div>
+          <Button
+            variant="link"
+            className="mt-4 w-fit px-4 py-2 rounded-lg border text-primary"
+          >
+            See upcoming lessons
+          </Button>
+
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-sm font-medium mb-2">Recently Completed</h3>
+              <div className="space-y-2">
+                {upcomingLessons.map((lesson, index) => (
+                  <LessonCardHorizontal key={index} {...lesson} />
+                ))}
+              </div>
+              <Button
+                variant="link"
+                className="mt-4 w-fit px-4 py-2 rounded-lg border text-primary"
+              >
+                See recently completed lessons
+              </Button>
+            </div>
           </div>
         </div>
       </div>
