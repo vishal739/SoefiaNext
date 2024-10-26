@@ -1,10 +1,9 @@
 import Link from "next/link";
 import React from "react";
-import { ChevronDown, ChevronLeft, ChevronRightIcon, Grid2X2, List, Search } from "lucide-react";
+import { ChevronDown, Grid2X2, List, Search } from "lucide-react";
 import { camelCaseToTwoLetters } from "@/lib/formatter/camelCaseToTwoLetters";
 import LessonCardHorizontal from "@/components/common/cards/LessonCardHorizontal";
 import LessonCard from "@/components/common/cards/LessonCard";
-import { SmileySad } from "@phosphor-icons/react";
 import groupLessonsByTime from "@/lib/utils/grouping";
 
 type TabType = "upcoming" | "completed";
@@ -27,8 +26,6 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
   const [noDataAvailable, setNoDataAvailable] = React.useState<boolean>(false);
   const [noFilteredResults, setNoFilteredResults] =
     React.useState<boolean>(false);
-  const [currentPage, setCurrentPage] = React.useState<number>(1);
-  const itemsPerPage = 20;
 
   const [lessons] = React.useState<LessonNote[]>(initialLessons);
 
@@ -52,29 +49,9 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
     return filtered;
   }, [lessons, selectedClass, searchQuery]);
 
-  const totalPages = Math.ceil(filteredLessons.length / itemsPerPage);
-
-  const paginatedLessons = React.useMemo(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    return filteredLessons.slice(startIndex, endIndex);
-  }, [filteredLessons, currentPage]);
-
   const groupedLessons = React.useMemo(() => {
     return groupLessonsByTime(filteredLessons, selectedTab === "completed");
   }, [filteredLessons, selectedTab]);
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
 
   return (
     <div className="p-6 w-[94%] flex flex-col gap-6">
@@ -176,9 +153,9 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
         </div>
 
         {noDataAvailable ? (
-          <div className="flex flex-col items-center justify-center h-64 gap-2">
-            <SmileySad size={20} />
-            <p className="text-gray-600 ">No data available</p>
+          <div className="flex flex-col items-center justify-center h-64">
+            <Search className="h-16 w-16 text-gray-400" />
+            <p className="text-gray-600 mt-4">No data available</p>
           </div>
         ) : noFilteredResults ? (
           <div className="flex flex-col items-center justify-center h-64">
@@ -188,48 +165,46 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
         ) : (
           <div className="flex flex-col gap-4">
             {selectedTab === "upcoming"
-              ? ["today", "thisWeek", "nextWeek", "next30Days"].map(
-                  (period) => {
-                    const periodLessons =
-                      groupedLessons[period as keyof GroupedLessons];
-                    return (
-                      (periodLessons ?? []).length > 0 && (
-                        <div className="flex flex-col gap-3" key={period}>
-                          <h2 className="caption uppercase">
-                            {camelCaseToTwoLetters(period)}
-                          </h2>
-                          <div
-                            className={`${
-                              viewType === "grid"
-                                ? "flex overflow-x-auto space-x-4"
-                                : "grid grid-cols-1 gap-4"
-                            }`}
-                          >
-                            {(viewType === "grid" ? periodLessons : paginatedLessons)?.map((lesson, index) => (
-                              <div
-                                key={`${lesson.day}-${index}`}
-                                className={`${
-                                  viewType === "grid"
-                                    ? "min-w-[300px] md:min-w-[400px] lg:min-w-[500px]"
-                                    : ""
-                                }`}
-                              >
-                                {viewType === "grid" ? (
-                                  <LessonCard
-                                    lesson={lesson}
-                                    isDraft={period === "thisWeek"}
-                                  />
-                                ) : (
-                                  <LessonCardHorizontal {...lesson} />
-                                )}
-                              </div>
-                            ))}
-                          </div>
+              ? ["today", "thisWeek", "nextWeek", "next30Days"].map((period) => {
+                  const periodLessons =
+                    groupedLessons[period as keyof GroupedLessons];
+                  return (
+                    (periodLessons ?? []).length > 0 && (
+                      <div className="flex flex-col gap-3" key={period}>
+                        <h2 className="caption uppercase">
+                          {camelCaseToTwoLetters(period)}
+                        </h2>
+                        <div
+                          className={`${
+                            viewType === "grid"
+                              ? "flex overflow-x-auto space-x-4"
+                              : "grid grid-cols-1 gap-4"
+                          }`}
+                        >
+                          {(periodLessons ?? []).map((lesson, index) => (
+                            <div
+                              key={`${lesson.day}-${index}`}
+                              className={`${
+                                viewType === "grid"
+                                  ? "min-w-[300px] md:min-w-[400px] lg:min-w-[500px]"
+                                  : ""
+                              }`}
+                            >
+                              {viewType === "grid" ? (
+                                <LessonCard
+                                  lesson={lesson}
+                                  isDraft={period === "thisWeek"}
+                                />
+                              ) : (
+                                <LessonCardHorizontal {...lesson} />
+                              )}
+                            </div>
+                          ))}
                         </div>
-                      )
-                    );
-                  }
-                )
+                      </div>
+                    )
+                  );
+                })
               : ["past"].map((period) => {
                   const periodLessons =
                     groupedLessons[period as keyof GroupedLessons];
@@ -246,7 +221,7 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
                               : "grid grid-cols-1 gap-4"
                           }`}
                         >
-                          {(viewType === "grid" ? periodLessons : paginatedLessons)?.map((lesson, index) => (
+                          {(periodLessons ?? []).map((lesson, index) => (
                             <div
                               key={`${lesson.day}-${index}`}
                               className={`${
@@ -270,28 +245,6 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
                     )
                   );
                 })}
-          </div>
-        )}
-
-        {viewType === "list" && (
-          <div className="flex gap-2 items-center mt-4">
-            <button
-              onClick={handlePreviousPage}
-              disabled={currentPage === 1}
-              className="p-2 bg-gray-200 rounded-md disabled:opacity-50"
-            >
-              <ChevronLeft/>
-            </button>
-            <span className="caption">
-              Page {currentPage} of {totalPages}
-            </span>
-            <button
-              onClick={handleNextPage}
-              disabled={currentPage === totalPages}
-              className="p-2 bg-gray-200 rounded-md disabled:opacity-50"
-            >
-              <ChevronRightIcon/>
-            </button>
           </div>
         )}
       </div>
