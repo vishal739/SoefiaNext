@@ -1,6 +1,6 @@
 import React from "react";
 import StudentCurrentLessonSummaryCard from "./StudentCurrentLessonSummaryCard";
-import RecentLessonCard from "@/components/common/cards/LessonCard";
+import RecentLessonCard from "@/components/common/cards/LessonCardHorizontal";
 import UpDown from "@/components/common/buttons/UpDown";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 

@@ -12,7 +12,7 @@ import TNoteBook from "./pages/TNoteBook";
 import generateSampleLessons from "@/lib/sample/generateLessons";
 
 const main_pages = [
-  <TLessons key={"lessons-t"} initialLessons={generateSampleLessons(100)} />,
+  <TLessons key={"lessons-t"} initialLessons={generateSampleLessons(1000)} />,
   <TClasses key={"classes-t"} />,
   <TStudents key={"students-t"} />,
   <TNoteBook key={"notebook-t"} />,

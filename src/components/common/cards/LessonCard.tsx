@@ -1,49 +1,88 @@
-import { EllipsisIcon, Play, PlayIcon } from "lucide-react";
-import React from "react";
+import { Play, Edit2Icon, Copy, FileText } from "lucide-react";
+import Link from "next/link";
 
-export default function LessonCard({
-  day,
-  dayOfWeek,
-  lessonDate,
-  classname,
-  topic,
-  launchLessonLink,
-}: LessonNote) {
+export interface LessonCardProps {
+  lesson: LessonNote;
+  isDraft?: boolean;
+}
+
+const LessonCard: React.FC<LessonCardProps> = ({ lesson, isDraft = false }) => {
+  const today = new Date();
+  const lessonDate = new Date(lesson.lessonDate);
+  const isToday = lessonDate.toDateString() === today.toDateString();
+  const isFuture = lessonDate > today;
+
   return (
-    <div className="flex items-center justify-between bg-white border-l-8  rounded-lg p-4  border border-[#DFDAD3]">
-      <div className="flex items-center">
-        <div className="flex  items-center justify-center gap-2 border-l-red-500 border-l-4 bg-red-100 rounded-lg p-2 px-4 mr-6 ">
-          <span className="text-lg font-bold">{day}</span>
-          <span className="text-sm capitalize">{dayOfWeek}</span>
+    <div className="p-6 border rounded-lg shadow-sm">
+      <div className="flex items-start justify-between mb-6">
+        <div className="flex items-center gap-4">
+          <div className="text-center flex flex-col bg-[#F9F3EB] px-2 py-1 items-center justify-center border-t-4 border-t-red-600 rounded-md">
+            <div className="font-bold">{lesson.day}</div>
+            <div className="text-sm text-gray-600">{lesson.dayOfWeek}</div>
+          </div>
+          <div>
+            <div className="caption">LESSON DATE</div>
+            <div>{lesson.lessonDate}</div>
+          </div>
+        </div>
+        {isDraft ? (
+          <span className="px-2 py-1 text-sm text-orange-600 bg-orange-50 rounded">
+            DRAFT
+          </span>
+        ) : isToday ? (
+          <Link
+            href={lesson.launchLessonLink}
+            className="px-4 py-2 flex items-center gap-1 bg-[#E3E4FF] text-primary text-sm font-semibold rounded-md"
+          >
+            <Play size={16} />
+            Launch
+          </Link>
+        ) : isFuture ? (
+          <button
+            className="px-4 py-2 flex items-center gap-1 bg-[#E3E4FF] text-primary text-sm font-semibold rounded-md"
+            onClick={() => console.log("Edit lesson", lesson)}
+          >
+            <Edit2Icon size={16} />
+            Edit
+          </button>
+        ) : (
+          <button
+            className="px-4 py-2 flex items-center gap-1 bg-[#E3E4FF] text-primary text-sm font-semibold rounded-md"
+            onClick={() => console.log("Review notes", lesson)}
+          >
+            <FileText size={16} />
+            Review Notes
+          </button>
+        )}
+      </div>
+      <div className="space-y-4">
+        <div>
+          <div className="caption">CLASS</div>
+          <div className="label">{lesson.classname}</div>
         </div>
         <div>
-          <div className="caption">LESSON DATE</div>
-          <div className="text-sm">{lessonDate}</div>
+          <div className="caption">TOPIC</div>
+          <div className="bodyBig">{lesson.topic}</div>
         </div>
-      </div>
-
-      <div className="flex-1 mx-4">
-        <div className="caption">CLASS</div>
-        <div className="text-sm">{classname}</div>
-      </div>
-
-      <div className="flex-1 mx-4">
-        <div className="caption">TOPIC</div>
-        <div className="text-sm font-semibold">{topic}</div>
-      </div>
-
-      <div className="flex items-center space-x-4">
-        <button className="text-primary hover:text-gray-600 border aspect-square rounded-md p-2 hover:bg-primary hover:bg-opacity-15 transition-colors border-[#DFDAD3]">
-          <EllipsisIcon size={14} />
-        </button>
-        <a
-          href={launchLessonLink}
-          className="bg-primary bg-opacity-10 text-primary hover:text-indigo-800 font-semibold px-4 py-2 gap-2 rounded-lg flex items-center"
-        >
-          <PlayIcon size={12} />
-          Launch lesson
-        </a>
+        <div className="flex gap-4 pt-2">
+          <button
+            className="flex items-center gap-2 border rounded-md px-4 py-2 border-[#DFDAD3] text-primary hover:bg-[#5458c918] transition-colors"
+            onClick={() => console.log("Edit lesson", lesson)}
+          >
+            <Edit2Icon size={14} />
+            <span className="text-sm">Edit lesson</span>
+          </button>
+          <button
+            className="flex items-center gap-2 border rounded-md px-4 py-2 border-[#DFDAD3] text-primary hover:bg-[#5458c918] transition-colors"
+            onClick={() => console.log("Duplicate lesson", lesson)}
+          >
+            <Copy size={14} />
+            <span className="text-sm">Duplicate</span>
+          </button>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default LessonCard;
