@@ -9,9 +9,10 @@ import TLessons from "./pages/TLessons";
 import TClasses from "./pages/TClasses";
 import TStudents from "./pages/TStudents";
 import TNoteBook from "./pages/TNoteBook";
+import generateSampleLessons from "@/lib/sample/generateLessons";
 
 const main_pages = [
-  <TLessons key={"lessons-t"} />,
+  <TLessons key={"lessons-t"} initialLessons={generateSampleLessons(100)} />,
   <TClasses key={"classes-t"} />,
   <TStudents key={"students-t"} />,
   <TNoteBook key={"notebook-t"} />,

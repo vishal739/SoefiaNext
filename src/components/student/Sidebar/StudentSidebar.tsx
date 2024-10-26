@@ -29,6 +29,7 @@ export default function StudentSidebar() {
               isActive={page?.toString()==ele.selector}
               key={idx}
               selector={ele.selector}
+              isTeacher={false}
             />
           ))}
         </div>

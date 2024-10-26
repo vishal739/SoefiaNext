@@ -7,25 +7,28 @@ interface Props {
   isActive?: boolean;
   text: string;
   iconUrl: string;
-  selector:string;
+  selector: string;
+  isTeacher:boolean;
 }
 
-export default function SidebarButton({ iconUrl, text, isActive,selector }: Props) {
-
-    const page = useSearchParams().get("page");
-    const router = useRouter();
-
-
-
+export default function SidebarButton({
+  iconUrl,
+  text,
+  isActive,
+  selector,
+  isTeacher
+}: Props) {
+  const page = useSearchParams().get("page");
+  const router = useRouter();
 
   return (
     <div
-        onClick={()=>{
-            if(page===selector) return null;
-            router.push(`/students?page=${selector}`);
-            
-        }}
-    className="flex flex-col items-center gap-1 justify-center cursor-pointer hover:text-primary group">
+      onClick={() => {
+        if (page === selector) return null;
+       isTeacher?router.push(`/teacher/?page=${selector}`)  : router.push(`/students/?page=${selector}`);
+      }}
+      className="flex flex-col items-center gap-1 justify-center cursor-pointer hover:text-primary group"
+    >
       <Image
         src={iconUrl}
         alt={text}
