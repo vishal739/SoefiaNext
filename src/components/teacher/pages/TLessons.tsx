@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { ChevronDown, Grid2X2, List, Search } from "lucide-react";
+import { ChevronDown, ChevronUp, Grid2X2, List, Search } from "lucide-react";
 import { camelCaseToTwoLetters } from "@/lib/formatter/camelCaseToTwoLetters";
 import LessonCardHorizontal from "@/components/common/cards/LessonCardHorizontal";
 import LessonCard from "@/components/common/cards/LessonCard";
@@ -26,6 +26,9 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
   const [noDataAvailable, setNoDataAvailable] = React.useState<boolean>(false);
   const [noFilteredResults, setNoFilteredResults] =
     React.useState<boolean>(false);
+  const [collapsedSections, setCollapsedSections] = React.useState<{
+    [key: string]: boolean;
+  }>({});
 
   const [lessons] = React.useState<LessonNote[]>(initialLessons);
 
@@ -53,12 +56,19 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
     return groupLessonsByTime(filteredLessons, selectedTab === "completed");
   }, [filteredLessons, selectedTab]);
 
+  const toggleSectionCollapse = (section: string) => {
+    setCollapsedSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
   return (
     <div className="p-6 w-[94%] flex flex-col gap-6">
       <div className="flex justify-between items-center w-full">
         <h1 className="text-2xl font-bold">Lessons</h1>
         <Link
-          href="/create-lesson"
+          href="/teacher/create-lesson"
           className="bg-primary text-white px-4 py-2 rounded-md hover:bg-indigo-700"
         >
           Create Lesson
@@ -171,36 +181,34 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
                   return (
                     (periodLessons ?? []).length > 0 && (
                       <div className="flex flex-col gap-3" key={period}>
-                        <h2 className="caption uppercase">
-                          {camelCaseToTwoLetters(period)}
-                        </h2>
-                        <div
-                          className={`${
-                            viewType === "grid"
-                              ? "flex overflow-x-auto space-x-4"
-                              : "grid grid-cols-1 gap-4"
-                          }`}
+                        <h2
+                          className="caption uppercase cursor-pointer flex gap-2 items-center"
+                          onClick={() => toggleSectionCollapse(period)}
                         >
-                          {(periodLessons ?? []).map((lesson, index) => (
-                            <div
-                              key={`${lesson.day}-${index}`}
-                              className={`${
-                                viewType === "grid"
-                                  ? "min-w-[300px] md:min-w-[400px] lg:min-w-[500px]"
-                                  : ""
-                              }`}
-                            >
-                              {viewType === "grid" ? (
-                                <LessonCard
-                                  lesson={lesson}
-                                  isDraft={period === "thisWeek"}
-                                />
-                              ) : (
-                                <LessonCardHorizontal {...lesson} />
-                              )}
-                            </div>
-                          ))}
-                        </div>
+                          {camelCaseToTwoLetters(period)} {!collapsedSections[period]?<ChevronUp/> :<ChevronDown/>}
+                        </h2>
+                        {!collapsedSections[period] && (
+                          <div
+                            className={`grid gap-4 ${
+                              viewType === "grid"
+                                ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                                : ""
+                            }`}
+                          >
+                            {(periodLessons ?? []).map((lesson, index) => (
+                              <div key={`${lesson.day}-${index}`}>
+                                {viewType === "grid" ? (
+                                  <LessonCard
+                                    lesson={lesson}
+                                    isDraft={period === "thisWeek"}
+                                  />
+                                ) : (
+                                  <LessonCardHorizontal {...lesson} />
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )
                   );
@@ -211,36 +219,34 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
                   return (
                     (periodLessons ?? []).length > 0 && (
                       <div className="flex flex-col gap-3" key={period}>
-                        <h2 className="caption uppercase">
-                          {camelCaseToTwoLetters(period)}
-                        </h2>
-                        <div
-                          className={`${
-                            viewType === "grid"
-                              ? "flex overflow-x-auto space-x-4"
-                              : "grid grid-cols-1 gap-4"
-                          }`}
+                        <h2
+                          className="caption uppercase cursor-pointer flex gap-2 items-center"
+                          onClick={() => toggleSectionCollapse(period)}
                         >
-                          {(periodLessons ?? []).map((lesson, index) => (
-                            <div
-                              key={`${lesson.day}-${index}`}
-                              className={`${
-                                viewType === "grid"
-                                  ? "min-w-[300px] md:min-w-[400px] lg:min-w-[500px]"
-                                  : ""
-                              }`}
-                            >
-                              {viewType === "grid" ? (
-                                <LessonCard
-                                  lesson={lesson}
-                                  isDraft={period === "thisWeek"}
-                                />
-                              ) : (
-                                <LessonCardHorizontal {...lesson} />
-                              )}
-                            </div>
-                          ))}
-                        </div>
+                          {camelCaseToTwoLetters(period)} {!collapsedSections[period]?<ChevronUp/> :<ChevronDown/>}
+                        </h2>
+                        {!collapsedSections[period] && (
+                          <div
+                            className={`grid gap-4 ${
+                              viewType === "grid"
+                                ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                                : ""
+                            }`}
+                          >
+                            {(periodLessons ?? []).map((lesson, index) => (
+                              <div key={`${lesson.day}-${index}`}>
+                                {viewType === "grid" ? (
+                                  <LessonCard
+                                    lesson={lesson}
+                                    isDraft={period === "thisWeek"}
+                                  />
+                                ) : (
+                                  <LessonCardHorizontal {...lesson} />
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )
                   );

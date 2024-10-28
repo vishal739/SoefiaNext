@@ -54,6 +54,9 @@ interface Props {
   classId: string;
 }
 export default function ClassesInnerView({ classId }: Props) {
+  const [isAddFiles, setIsAddFiles] = React.useState(false);
+  const [isAddUrl, setIsAddUrls] = React.useState(false);
+
   const memoryLogs = [
     { date: "4 Oct 24", topic: "Standard Deviations" },
     { date: "3 Oct 24", topic: "Comparing and Contrasting Data Distributions" },
@@ -113,11 +116,71 @@ export default function ClassesInnerView({ classId }: Props) {
       <div className="flex flex-col gap-2">
         <div className="bodyBig">Add a Memory</div>
         <TextAreaWithActions
+          onAddFiles={() => {
+            setIsAddFiles(true)
+          }}
+          onAddUrl={() => {
+            setIsAddUrls(true);
+          }}
+          description="add a memory to deita"
           label="Update DeiTA on new information that it needs to know for this class"
           placeholder="Type your note"
           value=""
           onChange={() => {}}
         />
+        {isAddUrl && (
+          <div className="flex flex-col gap-2">
+            <input
+              placeholder="http:// Type in or paste the URL adress"
+              className="px-4 text-sm py-2 w-full border rounded-lg"
+            />
+            <div className="flex justify-between">
+              <button
+                onClick={() => {
+                  setIsAddUrls(false);
+                }}
+                className="px-2 py-1 text-sm border rounded-lg bg-white"
+              >
+                cancel
+              </button>
+              <button
+                onClick={() => {
+                  setIsAddUrls(false);
+                }}
+                className="bg-primary px-4 py-2 rounded-lg  text-white text-sm"
+              >
+                Add memory
+              </button>
+            </div>
+          </div>
+        )}
+
+        {isAddFiles && (
+          <div className="flex flex-col gap-2">
+            <input
+             type="file"
+              className="px-4 text-sm bg-white py-2 w-full border rounded-lg"
+            />
+            <div className="flex justify-between">
+              <button
+                onClick={() => {
+                  setIsAddFiles(false);
+                }}
+                className="px-2 py-1 text-sm border rounded-lg bg-white"
+              >
+                cancel
+              </button>
+              <button
+                onClick={() => {
+                  setIsAddFiles(false);
+                }}
+                className="bg-primary px-4 py-2 rounded-lg  text-white text-sm"
+              >
+                Add memory
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Memory Log Section */}

@@ -1,12 +1,28 @@
+import DeltaDialog from "@/components/common/dilaog/DeitaDialog";
 import { Microphone } from "@phosphor-icons/react";
 import { FileUp, Mic, Upload } from "lucide-react";
+import { useState } from 'react';
 
 const TextAreaWithActions: React.FC<{
-    label: string;
-    placeholder: string;
-    value: string;
-    onChange: (value: string) => void;
-  }> = ({ label, placeholder, value, onChange }) => (
+  label: string;
+  placeholder: string;
+  value: string;
+  onChange: (value: string) => void;
+  onAddUrl:()=>void;
+  onAddFiles:()=>void;
+  description: string;
+}> = ({ label, placeholder, value, onChange, description,onAddFiles,onAddUrl }) => {
+  const [showDeltaDialog, setShowDeltaDialog] = useState(false);
+
+  const handleTellDelta = () => {
+    setShowDeltaDialog(true);
+  };
+
+  const handleDeltaDialogClose = () => {
+    setShowDeltaDialog(false);
+  };
+
+  return (
     <div className="space-y-2">
       <label className="bodySmall">{label}</label>
       <div className="space-y-2">
@@ -25,21 +41,29 @@ const TextAreaWithActions: React.FC<{
           </div>
         </div>
         <div className="flex gap-4 py-2">
-          <button className="flex items-center gap-1 text-primary bg-[#E3E4FF] hover:text-primary/80 px-4 py-2   rounded-lg">
+          <button
+            className="flex items-center gap-1 text-primary bg-[#E3E4FF] hover:text-primary/80 px-4 py-2   rounded-lg"
+            onClick={handleTellDelta}
+          >
             <Mic className="w-4 h-4" />
             <span className="text-sm">Tell Delta</span>
           </button>
-          <button className="flex items-center gap-1 text-primary hover:text-primary/80 px-4 py-2 border rounded-lg border-[#DFDAD3]">
+          <button onClick={onAddUrl} className="flex items-center gap-1 text-primary hover:text-primary/80 px-4 py-2 border rounded-lg border-[#DFDAD3]">
             <FileUp className="w-4 h-4" />
             <span className="text-sm">Add URL</span>
           </button>
-          <button className="flex items-center gap-1 text-primary hover:text-primary/80 px-4 py-2 border rounded-lg border-[#DFDAD3]">
+          <button onClick={onAddFiles} className="flex items-center gap-1 text-primary hover:text-primary/80 px-4 py-2 border rounded-lg border-[#DFDAD3]">
             <Upload className="w-4 h-4" />
             <span className="text-sm">Upload Files</span>
           </button>
         </div>
       </div>
+
+      {showDeltaDialog && (
+        <DeltaDialog description={description} onClose={handleDeltaDialogClose} />
+      )}
     </div>
   );
+};
 
-  export default TextAreaWithActions;
+export default TextAreaWithActions;

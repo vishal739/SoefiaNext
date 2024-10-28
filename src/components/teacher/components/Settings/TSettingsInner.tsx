@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mic, FileUp, Upload, Plus, Minus } from 'lucide-react';
 import { Microphone } from "@phosphor-icons/react";
 import TextAreaWithActions from '../CreateLesson/TextAreaWithActions';
+import Image from 'next/image';
 
 const TSettingsInner = () => {
   const [activeTab, setActiveTab] = useState('Regular');
@@ -33,13 +34,17 @@ const TSettingsInner = () => {
         ))}
       </div>
 
-      {/* Special Instructions Section */}
-      <div className="space-y-4">
+     <div className='bg-white rounded-lg p-6 flex flex-col gap-6'>
+       {/* Special Instructions Section */}
+       <div className="space-y-4">
         <h2 className="text-lg font-semibold">Teacher Special Instructions for DeiTA</h2>
         <p className="text-gray-600 text-sm">
           Update your DeiTAs on any policies or guidelines that they should follow when working with your students
         </p>
         <TextAreaWithActions
+        onAddFiles={()=>{}}
+        onAddUrl={()=>{}}
+        description='take your note'
           label=""
           placeholder="Type your note"
           value={specialInstructions}
@@ -58,17 +63,17 @@ const TSettingsInner = () => {
         </p>
         
         {/* Formation Options */}
-        <div className="space-y-2">
+        <div className="flex items-center gap-4">
           <div className="text-sm font-medium">Formation</div>
           <div className="flex gap-4">
             {['Alphabetic', 'Heterogenous', 'Homogenous', 'Random'].map((option) => (
-              <label key={option} className="flex items-center gap-2">
+              <label key={option} className="flex items-center gap-2 cursor-pointer  bg-slate-50 px-4 py-2 rounded-lg">
                 <input
                   type="radio"
                   name="formation"
                   value={option}
                   defaultChecked={option === 'Alphabetic'}
-                  className="text-primary"
+                  className=""
                 />
                 <span className="text-sm">{option}</span>
               </label>
@@ -77,11 +82,11 @@ const TSettingsInner = () => {
         </div>
 
         {/* Naming Options */}
-        <div className="space-y-2">
+        <div className="flex items-center gap-4">
           <div className="text-sm font-medium">Naming</div>
           <div className="flex gap-4">
             {['Colors', 'Letters', 'Numbers'].map((option) => (
-              <label key={option} className="flex items-center gap-2">
+              <label key={option} className="flex items-center gap-2 cursor-pointer  bg-slate-50 px-4 py-2 rounded-lg">
                 <input
                   type="radio"
                   name="naming"
@@ -109,7 +114,7 @@ const TSettingsInner = () => {
               <Minus className="w-4 h-4" />
             </button>
             <input
-              type="number"
+          
               value={stepAwayLimit}
               onChange={(e) => setStepAwayLimit(parseInt(e.target.value) || 0)}
               className="w-16 text-center border rounded-md p-2"
@@ -150,9 +155,9 @@ const TSettingsInner = () => {
         </p>
         <div className="border rounded-lg p-6 space-y-6">
           <div className="grid grid-cols-3 gap-6">
-            <div>
-              <img src="/api/placeholder/150/150" alt="Avatar" className="rounded-lg" />
-              <button className="mt-2 text-primary text-sm">Try Again</button>
+            <div className='flex flex-col items-center justify-center'>
+              <Image src="/testing/deita.png" alt="Avatar" className="rounded-lg" height={150}  width={150} />
+              <button className="mt-2 text-primary text-sm px-4 py-2 border rounded-lg">Try Again</button>
             </div>
             <div className="col-span-2 space-y-4">
               <textarea
@@ -196,9 +201,10 @@ const TSettingsInner = () => {
       </div>
 
       {/* Save Button */}
-      <button className="bg-primary text-white px-8 py-2 rounded-lg ml-auto block">
+      <button className="bg-primary mt-4 text-white px-4 py-2 rounded-lg ml-auto text-sm block">
         Save
       </button>
+     </div>
     </div>
   );
 };

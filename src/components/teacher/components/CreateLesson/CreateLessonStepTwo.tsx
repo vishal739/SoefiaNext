@@ -10,6 +10,7 @@ import {
 import { toast } from "react-toastify";
 import GroupPreview, { GroupData } from "../GroupPreview/GroupPreview";
 import { DialogTrigger, Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { useRouter } from "next/navigation";
 
 interface Props {
   setCompletionStep: VoidFunction;
@@ -111,6 +112,7 @@ const Section = ({
 
 export default function CreateLessonStepTwo({ setCompletionStep }: Props) {
   const [groups, setGroups] = React.useState(sampleData);
+  const router = useRouter();
   return (
     <div className="min-h-screen">
       {/* Header */}
@@ -119,7 +121,9 @@ export default function CreateLessonStepTwo({ setCompletionStep }: Props) {
           <h1 className="text-xl font-semibold">Create lesson</h1>
           <p className="text-sm opacity-80">Step 2 out of 2</p>
         </div>
-        <button className="p-2 hover:bg-white/10 rounded-full">
+        <button onClick={()=>{
+          router.back();
+        }} className="p-2 hover:bg-white/10 rounded-full">
           <X className="w-6 h-6" />
         </button>
       </div>

@@ -1,11 +1,12 @@
 import SidebarButton from "@/components/common/buttons/SidebarButton";
+import { House, Student } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React from "react";
 
 const routes = [
-  { name: "Home", icon: "/assets/homeIcon.svg", selector: "home" },
-  { name: "Lesson Notes", icon: "/assets/lessonIcon.svg", selector: "lesson" },
+  { name: "Home", icon: <House/>, selector: "home" },
+  { name: "Lesson Notes", icon:<Student/>, selector: "lesson" },
 ];
 
 export default function StudentSidebar() {

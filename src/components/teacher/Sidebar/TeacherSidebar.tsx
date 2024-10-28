@@ -1,13 +1,21 @@
 import SidebarButton from "@/components/common/buttons/SidebarButton";
+import {
+  Book,
+  ChalkboardSimple,
+  Gear,
+  NoteBlank,
+  Student,
+  User,
+} from "@phosphor-icons/react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React from "react";
 
 const routes = [
-  { name: "Lessons", icon: "/assets/homeIcon.svg", selector: "lessons" },
-  { name: "Classes", icon: "/assets/lessonIcon.svg", selector: "classes" },
-  { name: "Students", icon: "/assets/lessonIcon.svg", selector: "students" },
-  { name: "Notebook", icon: "/assets/lessonIcon.svg", selector: "notebook" },
+  { name: "Lessons", icon: <Book />, selector: "lessons" },
+  { name: "Classes", icon: <ChalkboardSimple />, selector: "classes" },
+  { name: "Students", icon: <Student />, selector: "students" },
+  { name: "Notebook", icon: <NoteBlank />, selector: "notebook" },
 ];
 
 export default function TeacherSidebar() {
@@ -22,7 +30,7 @@ export default function TeacherSidebar() {
         <h1 className="italic font-bold text-md text-center">Soefia</h1>
 
         {/* routes */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3">
           {routes.map((ele, idx) => (
             <SidebarButton
               iconUrl={ele.icon}
@@ -36,8 +44,19 @@ export default function TeacherSidebar() {
         </div>
       </div>
       {/* lower region */}
-      <div>
-        <Link href="/"></Link>
+      <div className="flex flex-col gap-2">
+        <SidebarButton
+          iconUrl=<Gear/>
+          isTeacher
+          selector="settings"
+          text="Settings"
+        />
+        <SidebarButton
+          iconUrl=<User/>
+          isTeacher
+          selector="Profile"
+          text="Profile"
+        />
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const generateRandomLesson = (): LessonNote => {
     const lessonDate = date.toISOString().split('T')[0];
     const classname = `Class ${Math.floor(Math.random() * 10) + 1}`;
     const topic = `Topic ${Math.floor(Math.random() * 100) + 1}`;
-    const launchLessonLink = `/lesson/${uuidv4()}`;
+    const launchLessonLink = `/teacher/live-lesson`;
 
     return {
         day,

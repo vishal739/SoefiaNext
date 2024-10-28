@@ -10,12 +10,14 @@ import TClasses from "./pages/TClasses";
 import TStudents from "./pages/TStudents";
 import TNoteBook from "./pages/TNoteBook";
 import generateSampleLessons from "@/lib/sample/generateLessons";
+import TSettings from "./pages/TSettings";
 
 const main_pages = [
-  <TLessons key={"lessons-t"} initialLessons={generateSampleLessons(20)} />,
+  <TLessons key={"lessons-t"} initialLessons={generateSampleLessons(200)} />,
   <TClasses key={"classes-t"} />,
   <TStudents key={"students-t"} />,
   <TNoteBook key={"notebook-t"} />,
+  <TSettings key={"settings-t"} />,
 ];
 
 function returnContent(page: string, lessonId?: string): React.JSX.Element {
@@ -28,6 +30,8 @@ function returnContent(page: string, lessonId?: string): React.JSX.Element {
       return main_pages[2];
     case "notebook":
       return main_pages[3];
+    case "settings":
+      return main_pages[4];
 
     default:
       return main_pages[0];
@@ -41,7 +45,9 @@ export default function TeacherWrapper() {
 
   if (width > 1200) {
     return (
-      <TLargeLayout selectedMainPage={returnContent(selectedPage ?? "lessons")} />
+      <TLargeLayout
+        selectedMainPage={returnContent(selectedPage ?? "lessons")}
+      />
     );
   } else if (width > 900) {
     return <TMediumLayout />;

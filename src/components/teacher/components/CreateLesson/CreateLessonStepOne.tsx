@@ -7,6 +7,7 @@ import {
 } from "@/models/create/create.lesson.model";
 import { Microphone, Users } from "@phosphor-icons/react";
 import TextAreaWithActions from "./TextAreaWithActions";
+import { useRouter } from "next/navigation";
 
 interface Props {
   setCompletionStep: VoidFunction;
@@ -25,8 +26,6 @@ const namingOptions: NamingOption[] = [
   { id: "2", label: "Letters", value: "letters" },
   { id: "3", label: "Numbers", value: "numbers" },
 ];
-
-
 
 export default function CreateLessonStepOne({
   setCompletionStep,
@@ -58,6 +57,7 @@ export default function CreateLessonStepOne({
           : Math.max(1, prev.groupCount - 1),
     }));
   };
+  const router = useRouter();
 
   return (
     <div className="min-h-screen">
@@ -67,7 +67,12 @@ export default function CreateLessonStepOne({
           <h1 className="text-xl font-semibold">Create lesson</h1>
           <p className="text-sm opacity-80">Step 1 out of 2</p>
         </div>
-        <button className="p-2 hover:bg-white/10 rounded-full">
+        <button
+          onClick={() => {
+            router.back();
+          }}
+          className="p-2 hover:bg-white/10 rounded-full"
+        >
           <X className="w-6 h-6" />
         </button>
       </div>
@@ -231,12 +236,19 @@ export default function CreateLessonStepOne({
           </div>
 
           <TextAreaWithActions
+            description="take your note"
             label="Objective"
             placeholder="Type your note"
             value={formData.objective}
             onChange={(value) =>
               setFormData((prev) => ({ ...prev, objective: value }))
             }
+            onAddUrl={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            onAddFiles={function (): void {
+              throw new Error("Function not implemented.");
+            }}
           />
 
           <div>
@@ -258,21 +270,35 @@ export default function CreateLessonStepOne({
           </div>
 
           <TextAreaWithActions
+            description="take your note"
             label="Description"
             placeholder="Type your note"
             value={formData.description}
             onChange={(value) =>
               setFormData((prev) => ({ ...prev, description: value }))
             }
+            onAddUrl={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            onAddFiles={function (): void {
+              throw new Error("Function not implemented.");
+            }}
           />
 
           <TextAreaWithActions
+            description="take your note"
             label="Activity"
             placeholder="Type your note"
             value={formData.activity}
             onChange={(value) =>
               setFormData((prev) => ({ ...prev, activity: value }))
             }
+            onAddUrl={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            onAddFiles={function (): void {
+              throw new Error("Function not implemented.");
+            }}
           />
 
           <div>
@@ -284,47 +310,77 @@ export default function CreateLessonStepOne({
               </span>
             </h3>
             <TextAreaWithActions
+              description="take your note"
               label=""
               placeholder="Type your note"
               value={formData.materials}
               onChange={(value) =>
                 setFormData((prev) => ({ ...prev, materials: value }))
               }
+              onAddUrl={function (): void {
+                throw new Error("Function not implemented.");
+              }}
+              onAddFiles={function (): void {
+                throw new Error("Function not implemented.");
+              }}
             />
           </div>
 
           <TextAreaWithActions
+            description="take your note"
             label="Activity Social Goal"
             placeholder="Type your note"
             value={formData.activitySocialGoal}
             onChange={(value) =>
               setFormData((prev) => ({ ...prev, activitySocialGoal: value }))
             }
+            onAddUrl={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            onAddFiles={function (): void {
+              throw new Error("Function not implemented.");
+            }}
           />
 
           <TextAreaWithActions
+            description="take your note"
             label="Activity Academic Goal"
             placeholder="Type your note"
             value={formData.activityAcademicGoal}
             onChange={(value) =>
               setFormData((prev) => ({ ...prev, activityAcademicGoal: value }))
             }
+            onAddUrl={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            onAddFiles={function (): void {
+              throw new Error("Function not implemented.");
+            }}
           />
 
           <TextAreaWithActions
+            description="take your note"
             label="Homework"
             placeholder="Type your note"
             value={formData.homework}
             onChange={(value) =>
               setFormData((prev) => ({ ...prev, homework: value }))
             }
+            onAddUrl={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            onAddFiles={function (): void {
+              throw new Error("Function not implemented.");
+            }}
           />
         </section>
         <div className="h-36" />
 
         {/* Footer */}
         <div className="flex justify-between p-6 fixed bottom-0 right-0 left-0 w-full bg-white border-t shadow-md ">
-          <button className=" hover:text-gray-800 border px-4 py-2 rounded-lg text-sm font-semibold text-primary">Cancel</button>
+          <button className=" hover:text-gray-800 border px-4 py-2 rounded-lg text-sm font-semibold text-primary">
+            Cancel
+          </button>
           <div className="space-x-4">
             <button className="text-primary px-4 text-sm py-2 rounded-lg border hover:text-primary/80">
               Save as draft
