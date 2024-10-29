@@ -180,9 +180,7 @@ const GroupPreview: React.FC<GroupPreviewProps> = ({ groups, onChange }) => {
       <div className="md:p-6 p-2 flex flex-col gap-1 w-full ">
         <div className="flex justify-between items-center">
           <h2 className="headline">Group preview</h2>
-          <button className="text-gray-500 md:block hidden hover:text-gray-700">
-            <X className="w-5 h-5" />
-          </button>
+        
         </div>
         <p className="caption">
           You can rearrange students in groups by grabbing a students card and

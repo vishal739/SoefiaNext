@@ -157,9 +157,7 @@ export default function CreateLessonStepTwo({ setCompletionStep }: Props) {
                   <DialogContent >
                   <DialogTitle></DialogTitle>
                     <GroupPreview groups={groups} onChange={setGroups} />
-                    {/* <div className="w-[1200px]"> */}
-
-                    {/* </div> */}
+                
                   </DialogContent>
                 </Dialog>
               }
