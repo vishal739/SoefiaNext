@@ -31,6 +31,31 @@
   text-align: left;
   color: #1c1f2f;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .bodyBig {
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  .headline {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bodyBig {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .headline {
+    font-size: 18px;
+    line-height: 25.2px;
+  }
+}
 .bodySmall {
   font-family: Poppins;
   font-size: 14px;

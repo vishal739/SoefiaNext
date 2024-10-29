@@ -15,7 +15,7 @@ const LessonCard: React.FC<LessonCardProps> = ({ lesson, isDraft = false }) => {
   return (
     <div className="p-6 border rounded-lg shadow-sm">
       <div className="flex items-start justify-between mb-6">
-        <div className="flex items-center gap-4">
+        <div className="flex md:flex-row flex-col md:items-center gap-4">
           <div className="text-center flex flex-col bg-[#F9F3EB] px-2 py-1 items-center justify-center border-t-4 border-t-red-600 rounded-md">
             <div className="font-bold">{lesson.day}</div>
             <div className="text-sm text-gray-600">{lesson.dayOfWeek}</div>

@@ -64,11 +64,11 @@ const Header: React.FC<{ className: string; date: string }> = ({
   className,
   date,
 }) => (
-  <header className="flex gap-4 items-center">
-    <h2 className="text-primary border border-[#DFDAD3] px-2 py-1 rounded-lg font-medium">
+  <header className="flex lg:flex-row flex-col gap-4 md:items-center">
+    <h2 className="text-primary border w-fit border-[#DFDAD3] px-2 py-1 rounded-lg font-medium">
       {`Class: ${className}`}
     </h2>
-    <span className="text-sm text-[#474D68] border border-[#DFDAD3] flex items-center gap-2 py-1 px-2 rounded-lg">
+    <span className="text-sm w-fit text-[#474D68] border border-[#DFDAD3] flex items-center gap-2 py-1 px-2 rounded-lg">
       <Calendar size={16} /> {date}
     </span>
   </header>
@@ -117,7 +117,7 @@ const GroupMembers: React.FC<{
 }> = ({ members }) => (
   <div className="p-6 bg-white rounded-lg flex flex-col gap-2">
     <h3 className="label">Group A</h3>
-    <div className="grid grid-cols-4 gap-3">
+    <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-3">
       {members.map((member, index) => (
         <div
           key={index}
@@ -143,7 +143,7 @@ const FeedbackSection: React.FC = () => {
   return (
     <div className="border p-6 rounded-lg bg-white">
       <h3 className="label">Lesson feedback</h3>
-      <div className="grid grid-cols-5 py-3 gap-3">
+      <div className="grid lg:grid-cols-5 md:grid-cols-3 py-3 gap-3">
         {feedbackOptions.map((option, index) => (
           <FeedbackIcon key={index} {...option} />
         ))}
@@ -222,7 +222,7 @@ const LessonNotesPage: React.FC<Props> = ({ lessonId }) => {
     <div className="p-6 w-full flex items-start gap-4">
       <button onClick={()=>{
         router.back();
-      }} className="text-primary p-1 border border-[#DFDAD3] rounded-md">
+      }} className="text-primary lg:block hidden p-1 border border-[#DFDAD3] rounded-md">
         <ChevronLeft />
       </button>
 
@@ -236,7 +236,7 @@ const LessonNotesPage: React.FC<Props> = ({ lessonId }) => {
 
         <div className="w-full flex flex-col gap-4">
           <div className="bg-white p-6 rounded-lg">
-            <div className="grid grid-cols-3 gap-4 border p-4 rounded-lg">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4 border p-4 rounded-lg">
               <MetricCard
                 title="Exercise Progress"
                 metrics={lessonData.exerciseProgress}

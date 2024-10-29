@@ -5,7 +5,7 @@ import TSettingsSidebar from "../components/Settings/TSettingsSidebar";
 export default function TSettings() {
   const [selectedClass,setSelectedClass]=React.useState("");
   return (
-    <div className="flex">
+    <div className="flex md:flex-row flex-col">
       <TSettingsSidebar
         notebooks={["algebra 1","ALgebra32","class"]}
         onClassChange={(val)=>{

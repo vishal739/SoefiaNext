@@ -7,7 +7,7 @@ const sasmpleClasses = ["Alegbra I", "Maths 4", "Chemistry 2"];
 export default function TClasses() {
   const [selectedClass, setSelectedClass] = React.useState<string>("");
   return (
-    <div className="w-full flex">
+    <div className="w-full flex md:flex-row flex-col">
       <ClassSideBar
       selectedClass={selectedClass}
         classes={sasmpleClasses}

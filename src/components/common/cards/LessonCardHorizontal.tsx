@@ -22,12 +22,12 @@ export default function LessonCardHorizontal({
 
   return (
     <div
-      className={`flex items-center justify-between bg-white rounded-lg p-4 border border-[#DFDAD3] ${
+      className={`flex flex-col md:flex-row items-start md:items-center justify-between bg-white rounded-lg p-4 border border-[#DFDAD3] ${
         isToday ? "border-l-8 border-l-[#DFDAD3]" : ""
       }`}
     >
       {isToday || isFuture ? (
-        <div className="flex items-center">
+        <div className="flex items-center mb-4 md:mb-0">
           <div className="flex items-center justify-center gap-2 bg-red-100 border-l-4 border-red-500 rounded-lg p-2 px-4 mr-6">
             <span className="text-lg font-bold">{day}</span>
             <span className="text-sm capitalize">{dayOfWeek}</span>
@@ -38,7 +38,7 @@ export default function LessonCardHorizontal({
           </div>
         </div>
       ) : (
-        <div className="flex items-center">
+        <div className="flex items-center mb-4 md:mb-0">
           <div className="flex items-center justify-center gap-2 bg-[#F9F3EB] border-l-4 border-[#8E8881] rounded-lg p-2 px-4 mr-6">
             <span className="text-lg font-bold">{day}</span>
             <span className="text-sm capitalize">{dayOfWeek}</span>
@@ -50,17 +50,17 @@ export default function LessonCardHorizontal({
         </div>
       )}
 
-      <div className="flex-1 mx-4">
+      <div className="flex-1 lg:mx-4 mb-4 md:mb-0">
         <div className="caption">CLASS</div>
         <div className="text-sm">{classname}</div>
       </div>
 
-      <div className="flex-1 mx-4">
+      <div className="flex-1 lg:mx-4 mb-4 md:mb-0">
         <div className="caption">TOPIC</div>
         <div className="text-sm font-semibold">{topic}</div>
       </div>
 
-      <div className="aspect-square p-2 text-primary border rounded-md mr-2 ">
+      <div className="aspect-square p-2 text-primary border rounded-md mr-2 mb-4 md:mb-0">
         <MoreHorizontal size={14} />
       </div>
 

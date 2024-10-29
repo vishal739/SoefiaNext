@@ -1,6 +1,5 @@
 import SidebarButton from "@/components/common/buttons/SidebarButton";
-import { House, Student } from "@phosphor-icons/react";
-import Link from "next/link";
+import { Gear, House, Student, User } from "@phosphor-icons/react";
 import { useSearchParams } from "next/navigation";
 import React from "react";
 
@@ -36,8 +35,19 @@ export default function StudentSidebar() {
         </div>
       </div>
       {/* lower region */}
-      <div>
-        <Link href="/"></Link>
+      <div className="flex flex-col gap-2">
+        <SidebarButton
+          iconUrl={<Gear/>}
+          text="Settings"
+          isTeacher={false}
+          selector="settings"
+          />
+          <SidebarButton
+          iconUrl={<User/>}
+          text="Profile"
+          isTeacher={false}
+          selector="settings"
+          />
       </div>
     </div>
   );

@@ -177,10 +177,10 @@ const GroupPreview: React.FC<GroupPreviewProps> = ({ groups, onChange }) => {
       onDragEnd={handleDragEnd}
       modifiers={[restrictToWindowEdges]}
     >
-      <div className="p-6 flex flex-col gap-1 w-full">
+      <div className="md:p-6 p-2 flex flex-col gap-1 w-full ">
         <div className="flex justify-between items-center">
           <h2 className="headline">Group preview</h2>
-          <button className="text-gray-500 hover:text-gray-700">
+          <button className="text-gray-500 md:block hidden hover:text-gray-700">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -191,14 +191,14 @@ const GroupPreview: React.FC<GroupPreviewProps> = ({ groups, onChange }) => {
 
         <div className="flex flex-col gap-4">
           {Object.entries(groups).map(([groupName, students]) => (
-            <div key={groupName} className="space-y-4 flex items-center gap-6 border-b py-2">
+            <div key={groupName} className="space-y-4 flex md:flex-row flex-col md:items-center md:gap-6 border-b py-2">
               <h3 className="label">{groupName}</h3>
               <div>
                 <SortableContext
                   items={students.map(s => s.id)}
                   strategy={verticalListSortingStrategy}
                 >
-                  <div className="flex gap-4">
+                  <div className="flex md:flex-row flex-col gap-4">
                     {students.map((student) => (
                       <SortableItem
                         key={student.id}

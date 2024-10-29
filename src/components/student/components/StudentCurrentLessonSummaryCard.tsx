@@ -38,7 +38,7 @@ export default function StudentCurrentLessonSummaryCard({date,lessonLink,lessonS
       </div>
 
       {/* joining link button */}
-      <Link href="/" className="bg-primary rounded-md px-4 py-2 hover:bg-opacity-30">
+      <Link href="/students/live-lesson/test" className="bg-primary text-sm text-white rounded-md px-4 py-2 hover:bg-opacity-30">
         Join Lesson
       </Link>
       <div className="h-4"></div>

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Mic, Timer, HelpCircle, LogOut, Users2Icon } from "lucide-react";
+import { Mic, LogOut, Users2Icon } from "lucide-react";
 import Image from "next/image";
 import { Microphone, Pause } from "@phosphor-icons/react";
 
@@ -39,7 +39,7 @@ const GroupMembers: React.FC<{
 }> = ({ members }) => (
   <div className="p-6 bg-white rounded-lg flex flex-col gap-2">
     <h3 className="label">Group A</h3>
-    <div className="grid grid-cols-4 gap-3">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
       {members.map((member, index) => (
         <div
           key={index}
@@ -63,10 +63,10 @@ export default function LiveLesson() {
   ];
 
   return (
-    <div className="p-6  w-full flex flex-col gap-4">
+    <div className="p-6 w-full flex flex-col gap-4">
       {/* Header */}
-      <header className="flex bg-white p-6 rounded-md items-center justify-between ">
-        <div className="flex  items-center gap-3">
+      <header className="flex flex-col sm:flex-row bg-white p-6 rounded-md items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
           <div className="flex flex-col gap-1">
             <h1 className="headline">Basic function transformations</h1>
             <div className="flex items-center gap-4">
@@ -82,8 +82,8 @@ export default function LiveLesson() {
           <span className="text-red-500 text-sm flex items-center gap-1">
             LESSON IN PROGRESS
           </span>
-          <div className="bg-red-100 p-2 rounded-full ripple ">
-          <Microphone size={20} weight="fill" color="#E9655D" />
+          <div className="bg-red-100 p-2 rounded-full ripple">
+            <Microphone size={20} weight="fill" color="#E9655D" />
           </div>
         </div>
       </header>
@@ -93,7 +93,7 @@ export default function LiveLesson() {
         {/* Exercise Section */}
         <section className="bg-white rounded-lg p-6 flex flex-col gap-6">
           <h2 className="font-semibold">Exercise</h2>
-          <div className="">
+          <div>
             <h3 className="bodySmall">Problem</h3>
             <p className="bodyBig">Name of the problem</p>
             <p className="regular">
@@ -136,8 +136,8 @@ export default function LiveLesson() {
               id=""
               className="outline-none border-none resize-none w-full focus:ring-0 ring-none"
             ></textarea>
-            <div className="absolute bottom-4 cursor-pointer group flex gap-2 items-center ">
-              <div className="aspect-square group-hover:bg-[#10121c13]  bg-[#10121C0A] rounded-full p-2">
+            <div className="absolute bottom-4 cursor-pointer group flex gap-2 items-center">
+              <div className="aspect-square group-hover:bg-[#10121c13] bg-[#10121C0A] rounded-full p-2">
                 <Mic size={18} />
               </div>
               <span className="caption group-hover:text-black transition-al">
@@ -151,17 +151,17 @@ export default function LiveLesson() {
 
       {/* Footer */}
       <footer className="fixed bottom-0 left-0 right-0 bg-white p-4 border-t">
-        <div className=" flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <button className="border border-slate-300 px-6 py-2 rounded-md flex text-primary items-center gap-2">
             <LogOut className="w-4 h-4" />
             Exit lesson
           </button>
-          <div className="flex items-center gap-4 ">
-            <div className="flex flex-col items-end">
-                <span className="caption">REMAINING LESSON TIME</span>
-                <h3>00:15:09</h3>
+          <div className="flex items-center gap-4">
+            <div className="flex flex-col lg:items-end">
+              <span className="caption">REMAINING LESSON TIME</span>
+              <h3>00:15:09</h3>
             </div>
-            <button className="bg-primary text-white px-4 py-2 rounded-lg flex items-center gap-2">
+            <button className="bg-primary lg:text-md text-sm text-white px-4 py-2 rounded-lg flex items-center gap-2">
               <Pause weight="fill" />
               Pause for 15 seconds
             </button>
