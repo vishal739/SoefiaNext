@@ -20,16 +20,16 @@ export default function TNoteBookSidebar({
   };
 
   return (
-    <div className="border-b w-full px-3 py-3">
+    <div className="border-b max-w-full px-3 py-3">
       {/* Desktop version */}
-      <div className="hidden md:block min-h-screen border-r min-w-[120px] px-3 py-3">
+      <div className="hidden md:block min-h-screen border-r w-[140px] min-w-[140px] px-3 py-3">
         <h2 className="bodyBig">Notebooks</h2>
         <div className="flex flex-col gap-2 py-2">
           {notebooks.map((cls) => (
             <button
               key={cls}
               onClick={() => onClassChange(cls)}
-              className={`w-full flex items-center justify-between px-4 py-2   ${
+              className={`w-fit flex items-center justify-between px-4 py-2   ${
                 selectedNotebook === cls
                   ? " border-b-primary border-b-2"
                   : "border-b-[#10121C14] border-b-2"

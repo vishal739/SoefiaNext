@@ -99,7 +99,7 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
       </div>
 
       <div className="flex flex-col gap-4 p-6 rounded-md bg-white ">
-        <div className="flex md:flex-row flex-col justify-between items-end  gap-4 ">
+        <div className="flex md:flex-row flex-col justify-between lg:items-end  gap-4 ">
           <div className="flex md:flex-row flex-col gap-4">
             <div className="">
               <label className="caption mb-1">Class</label>

@@ -111,7 +111,7 @@ const SummaryObservations = ({ summary }: { summary: string }) => (
         <div className="flex gap-4 py-4">
             <button className="flex items-center gap-2 text-primary rounded-lg px-4 py-2 text-sm font-semibold bg-indigo-100">
                 <UserSound />
-                Correct with DelTA
+                Correct with deiTa
             </button>
             <button className="flex items-center gap-2 text-primary rounded-lg px-4 py-2 text-sm font-semibold border">
                 <Pencil /> Edit manually
@@ -145,7 +145,7 @@ const ReviewSection = ({ review }: { review: { teachingEmphasis: string[]; lesso
         <div className="flex gap-4 py-4">
             <button className="flex items-center gap-2 text-primary rounded-lg px-4 py-2 text-sm font-semibold bg-indigo-100">
                 <UserSound />
-                Correct with DelTA
+                Correct with deiTa
             </button>
             <button className="flex items-center gap-2 text-primary rounded-lg px-4 py-2 text-sm font-semibold border">
                 <Pencil /> Edit manually

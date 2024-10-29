@@ -97,7 +97,7 @@ const Section = ({
       {hasCorrect && (
         <button className="text-primary text-sm bg-[#E3E4FF] px-4 py-2 rounded-lg border hover:bg-[#E3E4FF]/80 flex items-center gap-2">
           <UserSound weight="fill" />
-          Correct with DeltA
+          Correct with deiTa
         </button>
       )}
       {hasEdit && (
@@ -157,9 +157,7 @@ export default function CreateLessonStepTwo({ setCompletionStep }: Props) {
                   <DialogContent >
                   <DialogTitle></DialogTitle>
                     <GroupPreview groups={groups} onChange={setGroups} />
-                    {/* <div className="w-[1200px]"> */}
-
-                    {/* </div> */}
+                
                   </DialogContent>
                 </Dialog>
               }

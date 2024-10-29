@@ -244,12 +244,12 @@ const groups: StudentGroup[] = [
               </div>
 
               <div className="flex md:flex-row flex-col gap-8">
-                <div className=" flex flex-col gap-4">
+                <div className=" flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <h3 className="text-sm font-medium">Progress</h3>
                     <StatusBadge status={group.progress.status} />
                   </div>
-                  <div className="space-y-2 ">
+                  <div className="flex flex-row md:flex-col justify-between gap-4">
                     <div>
                       <span className="text-sm text-gray-600">Academic</span>
                       <ProgressBar 
@@ -272,7 +272,7 @@ const groups: StudentGroup[] = [
                     <h3 className="text-sm font-medium">Sentiment</h3>
                     <StatusBadge status={group.sentiment.status} />
                   </div>
-                  <div className="space-y-2">
+                  <div className="flex flex-row md:flex-col justify-between gap-4">
                     <div>
                       <span className="text-sm text-gray-600">Positive</span>
                       <ProgressBar 

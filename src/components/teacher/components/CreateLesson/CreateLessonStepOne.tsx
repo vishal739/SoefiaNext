@@ -8,6 +8,13 @@ import {
 import { Microphone, Users } from "@phosphor-icons/react";
 import TextAreaWithActions from "./TextAreaWithActions";
 import { useRouter } from "next/navigation";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import GroupPreview, { GroupData } from "../GroupPreview/GroupPreview";
 
 interface Props {
   setCompletionStep: VoidFunction;
@@ -26,6 +33,39 @@ const namingOptions: NamingOption[] = [
   { id: "2", label: "Letters", value: "letters" },
   { id: "3", label: "Numbers", value: "numbers" },
 ];
+
+const generateId = () => Math.random().toString(36).substr(2, 9);
+
+const sampleData: GroupData = {
+  "Group A": [
+    { id: generateId(), name: "Davison", role: "Recordkeeper" },
+    { id: generateId(), name: "Brissett", role: "Spokesperson" },
+    { id: generateId(), name: "Hauser", role: "Timekeeper" },
+    { id: generateId(), name: "Mazzulla", role: "Researcher" },
+  ],
+  "Group B": [
+    { id: generateId(), name: "Smith", role: "Recordkeeper" },
+    { id: generateId(), name: "Johnson", role: "Spokesperson" },
+    { id: generateId(), name: "Williams", role: "Timekeeper" },
+    { id: generateId(), name: "Watson", role: "Researcher" },
+  ],
+  "Group C": [
+    { id: generateId(), name: "Brown", role: "Recordkeeper" },
+    { id: generateId(), name: "Jones", role: "Spokesperson" },
+    { id: generateId(), name: "Garcia", role: "Timekeeper" },
+  ],
+  "Group D": [
+    { id: generateId(), name: "Miller", role: "Recordkeeper" },
+    { id: generateId(), name: "Davis", role: "Spokesperson" },
+    { id: generateId(), name: "Rodriguez", role: "Timekeeper" },
+    { id: generateId(), name: "Martinez", role: "Researcher" },
+  ],
+  "Group E": [
+    { id: generateId(), name: "Hernandez", role: "Recordkeeper" },
+    { id: generateId(), name: "Lopez", role: "Spokesperson" },
+    { id: generateId(), name: "Gonzalez", role: "Timekeeper" },
+  ],
+};
 
 export default function CreateLessonStepOne({
   setCompletionStep,
@@ -58,6 +98,7 @@ export default function CreateLessonStepOne({
     }));
   };
   const router = useRouter();
+  const [groups, setGroups] = React.useState(sampleData);
 
   return (
     <div className="min-h-screen">
@@ -132,7 +173,7 @@ export default function CreateLessonStepOne({
           <div className="flex flex-col gap-1">
             <h2 className="bodyBig">Groups</h2>
             <p className="bodySmall">
-              To change how groups are organized, go to DeltA Preferences and
+              To change how groups are organized, go to deiTa Preferences and
               change group settings.
             </p>
           </div>
@@ -211,10 +252,15 @@ export default function CreateLessonStepOne({
               </div>
             </div>
 
-            <button className="text-primary flex px-4 items-center gap-2 py-2 rounded-md border w-fit text-sm">
-              <Users weight="fill" />
-              Manage Group
-            </button>
+            <Dialog>
+              <DialogTrigger className="text-primary text-sm px-4 py-2 flex items-center gap-2 w-fit rounded-lg border hover:text-primary/80">
+                <Users /> Manage groups
+              </DialogTrigger>
+              <DialogContent>
+                <DialogTitle></DialogTitle>
+                <GroupPreview groups={groups} onChange={setGroups} />
+              </DialogContent>
+            </Dialog>
           </div>
         </section>
 
@@ -224,7 +270,7 @@ export default function CreateLessonStepOne({
             <div>
               <h2 className="bodyBig">Lesson plan</h2>
               <p className="bodySmall xl:max-w-[50%]">
-                Add information about your lesson. DeltA will analyze your input
+                Add information about your lesson. deiTa will analyze your input
                 and create a lesson plan in the next step. You can also upload a
                 file with an existing lesson plan
               </p>
@@ -305,7 +351,7 @@ export default function CreateLessonStepOne({
             <h3 className="text-sm font-medium mb-2">
               Materials{" "}
               <span className="text-gray-500">
-                (No need to add things you have provided DeltA already through
+                (No need to add things you have provided deiTa already through
                 the LMS)
               </span>
             </h3>

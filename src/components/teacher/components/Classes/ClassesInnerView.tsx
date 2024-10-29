@@ -68,30 +68,30 @@ export default function ClassesInnerView({ classId }: Props) {
     { date: "1 Oct 24", topic: "Technological Graphing" },
   ];
 
-  const upcomingLessons = [
+  const upcomingLessons:LessonNote[] = [
+    {
+      day: "30",
+      dayOfWeek: "Mon",
+      lessonDate: "2024-10-30",
+      launchLessonLink: "/teacher/live-lesson",
+      classname: "Class 3",
+      topic: "Topic 45",
+    },
     {
       day: "31",
-      dayOfWeek: "Sun",
-      lessonDate: "31/10/24",
-      classname: "Algebra I, Block A",
-      topic: "Writing Equations to Model Relationships",
-      launchLessonLink: "#",
-    },
-    {
-      day: "8",
       dayOfWeek: "Tue",
-      lessonDate: "Tomorrow",
-      classname: "Algebra I, Block A",
-      topic: "Equations and Their Solutions",
-      launchLessonLink: "#",
+      lessonDate: "2024-10-31",
+      launchLessonLink: "/teacher/live-lesson",
+      classname: "Class 6",
+      topic: "Topic 23",
     },
     {
-      day: "9",
+      day: "1",
       dayOfWeek: "Wed",
-      lessonDate: "10/12/24",
-      classname: "Algebra I, Block A",
-      topic: "Equations and Their Graphs",
-      launchLessonLink: "#",
+      lessonDate: "2024-11-01",
+      launchLessonLink: "/teacher/live-lesson",
+      classname: "Class 1",
+      topic: "Topic 10",
     },
   ];
 
@@ -182,7 +182,7 @@ export default function ClassesInnerView({ classId }: Props) {
         <CardHeader>
           <CardTitle>Class memory log</CardTitle>
           <p className="text-sm text-gray-500">
-            List of all the information DeltA already knows about the class
+            List of all the information deiTa already knows about the class
           </p>
         </CardHeader>
         <CardContent>
