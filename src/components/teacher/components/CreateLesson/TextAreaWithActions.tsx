@@ -1,5 +1,4 @@
 import DeitaDialog from "@/components/common/dilaog/DeitaDialog";
-import deiTaDialog from "@/components/common/dilaog/DeitaDialog";
 import { Microphone } from "@phosphor-icons/react";
 import { FileUp, Mic, Upload } from "lucide-react";
 import { useState } from 'react';
