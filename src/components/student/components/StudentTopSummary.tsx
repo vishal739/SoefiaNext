@@ -48,7 +48,7 @@ const lessons = [
 ];
 
 export default function StudentTopSummary() {
-  const currentTime = false;
+  const currentTime = true;
   const toshowLessons = lessons.slice(0, 4);
   const [isOpen, setOpen] = React.useState(false);
 
