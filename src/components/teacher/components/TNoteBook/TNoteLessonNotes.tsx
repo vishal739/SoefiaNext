@@ -108,8 +108,8 @@ export default function TNoteLessonNotes() {
     });
 
   return (
-    <div className="flex flex-col gap-2 p-6 bg-white rounded-lg">
-      <div className="flex justify-between items-center">
+    <div className="flex flex-col gap-2 md:p-6 p-3 bg-white rounded-lg">
+      <div className="flex md:flex-row flex-col justify-between md:items-center">
         <div className="flex flex-col  bg-white  py-2 text-sm  text-primary gap-2">
           <div className="caption font-semibold">Search Notes</div>
           <div className="relative flex items-center">

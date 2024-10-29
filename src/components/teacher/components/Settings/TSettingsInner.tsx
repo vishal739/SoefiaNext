@@ -14,7 +14,7 @@ const TSettingsInner = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-8">
+    <div className="max-w-4xl md:mx-auto p-6 space-y-8">
       <h1 className="text-2xl font-semibold">Settings</h1>
       
       {/* Tabs */}
@@ -50,7 +50,7 @@ const TSettingsInner = () => {
           value={specialInstructions}
           onChange={setSpecialInstructions}
         />
-        <button className="ml-auto block bg-primary text-white px-4 py-2 rounded-lg">
+        <button className="ml-auto block text-sm bg-primary text-white px-4 py-2 rounded-lg">
           Add guidance
         </button>
       </div>
@@ -63,9 +63,9 @@ const TSettingsInner = () => {
         </p>
         
         {/* Formation Options */}
-        <div className="flex items-center gap-4">
+        <div className="flex md:flex-row flex-col md:items-center gap-4">
           <div className="text-sm font-medium">Formation</div>
-          <div className="flex gap-4">
+          <div className="flex md:flex-row flex-col gap-4">
             {['Alphabetic', 'Heterogenous', 'Homogenous', 'Random'].map((option) => (
               <label key={option} className="flex items-center gap-2 cursor-pointer  bg-slate-50 px-4 py-2 rounded-lg">
                 <input
@@ -82,9 +82,9 @@ const TSettingsInner = () => {
         </div>
 
         {/* Naming Options */}
-        <div className="flex items-center gap-4">
+        <div className="flex  md:items-center md:flex-row flex-col gap-4">
           <div className="text-sm font-medium">Naming</div>
-          <div className="flex gap-4">
+          <div className="flex md:flex-row flex-col gap-4">
             {['Colors', 'Letters', 'Numbers'].map((option) => (
               <label key={option} className="flex items-center gap-2 cursor-pointer  bg-slate-50 px-4 py-2 rounded-lg">
                 <input
@@ -154,7 +154,7 @@ const TSettingsInner = () => {
           These settings will determine how your DeiTAs sound when they speak and how they looks whenever they appear
         </p>
         <div className="border rounded-lg p-6 space-y-6">
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             <div className='flex flex-col items-center justify-center'>
               <Image src="/testing/deita.png" alt="Avatar" className="rounded-lg" height={150}  width={150} />
               <button className="mt-2 text-primary text-sm px-4 py-2 border rounded-lg">Try Again</button>
@@ -164,7 +164,7 @@ const TSettingsInner = () => {
                 placeholder="Type your note"
                 className="w-full min-h-[150px] p-3 border rounded-md text-sm"
               />
-              <div className="flex gap-4">
+              <div className="flex md:flex-row flex-col gap-4">
                 <button className="flex items-center gap-1 text-primary bg-[#E3E4FF] px-4 py-2 rounded-lg">
                   <Mic className="w-4 h-4" />
                   <span className="text-sm">Tell Delta</span>
@@ -176,7 +176,7 @@ const TSettingsInner = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             <div className="space-y-2">
               <label className="text-sm font-medium">Voice tone</label>
               <select className="w-full p-2 border rounded-md">

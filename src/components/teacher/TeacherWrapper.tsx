@@ -49,9 +49,7 @@ export default function TeacherWrapper() {
         selectedMainPage={returnContent(selectedPage ?? "lessons")}
       />
     );
-  } else if (width > 900) {
-    return <TMediumLayout />;
-  } else {
-    return <TSmallLayout />;
+   } else {
+    return <TSmallLayout selectedMainPage={returnContent(selectedPage ?? "lessons")} />;
   }
 }

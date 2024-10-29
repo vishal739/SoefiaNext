@@ -59,8 +59,8 @@ export default function AllLesson() {
 
   return (
     <div className="bg-white rounded-md p-6">
-      <div className="flex items-center justify-between gap-4 py-8">
-        <div className="flex gap-8">
+      <div className="flex md:flex-row flex-col md:items-center justify-between gap-4 py-8">
+        <div className="flex md:flex-row flex-col gap-8">
           <div className="flex flex-col gap-1">
             <span>Class</span>
             <select

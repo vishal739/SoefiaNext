@@ -138,9 +138,9 @@ export default function CreateLessonStepOne({
           </div>
 
           <div className="flex flex-col gap-5 py-4 ">
-            <div className="flex gap-4 items-center">
+            <div className="flex md:flex-row flex-col gap-4 md:items-center">
               <p className="text-sm font-medium ">Formation</p>
-              <div className="flex gap-4 ml-6">
+              <div className="flex md:flex-row flex-col gap-4 md:ml-6">
                 {formationOptions.map((option) => (
                   <label
                     key={option.id}
@@ -165,9 +165,9 @@ export default function CreateLessonStepOne({
               </div>
             </div>
 
-            <div className="flex  gap-4 py-4 items-center">
+            <div className="flex md:flex-row flex-col  gap-4 py-4 md:items-center">
               <p className="text-sm font-medium">Naming</p>
-              <div className="flex gap-4 ml-10">
+              <div className="flex md:flex-row flex-col gap-4 md:ml-10">
                 {namingOptions.map((option) => (
                   <label
                     key={option.id}
@@ -377,7 +377,7 @@ export default function CreateLessonStepOne({
         <div className="h-36" />
 
         {/* Footer */}
-        <div className="flex justify-between p-6 fixed bottom-0 right-0 left-0 w-full bg-white border-t shadow-md ">
+        <div className="flex md:flex-row flex-col gap-4 justify-between p-6 fixed bottom-0 right-0 left-0 w-full bg-white border-t shadow-md ">
           <button className=" hover:text-gray-800 border px-4 py-2 rounded-lg text-sm font-semibold text-primary">
             Cancel
           </button>

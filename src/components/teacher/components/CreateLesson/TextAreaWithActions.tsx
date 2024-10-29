@@ -40,7 +40,7 @@ const TextAreaWithActions: React.FC<{
             Dictate note
           </div>
         </div>
-        <div className="flex gap-4 py-2">
+        <div className="flex md:flex-row flex-col gap-4 py-2">
           <button
             className="flex items-center gap-1 text-primary bg-[#E3E4FF] hover:text-primary/80 px-4 py-2   rounded-lg"
             onClick={handleTellDelta}

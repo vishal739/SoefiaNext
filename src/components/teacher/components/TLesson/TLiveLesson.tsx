@@ -26,7 +26,7 @@ type StudentGroup = {
 }
 
 const ProgressBar = ({ value, color }: { value: number; color: string }) => (
-  <div className="flex items-center gap-2">
+  <div className="flex md:flex-row flex-col md:items-center gap-2">
     <div className="w-32 h-2 bg-gray-200 rounded-full">
       <div
         className={`h-full rounded-full ${color}`}
@@ -206,9 +206,9 @@ const groups: StudentGroup[] = [
 ];
 
   return (
-    <div className=" p-6  ">
+    <div className=" md:p-6 p-3  ">
       <div className='flex flex-col gap-4'>
-      <div className="flex items-center justify-between bg-white p-6 rounded-lg">
+      <div className="flex md:flex-row flex-col md:items-center lg:gap-0 gap-4 justify-between bg-white p-6 rounded-lg">
         <div>
           <h1 className="text-2xl font-bold">Writing Equations to Model Relationships</h1>
           <div className="flex items-center gap-2 text-gray-600">
@@ -226,7 +226,7 @@ const groups: StudentGroup[] = [
       <div className="space-y-6">
         {groups.map((group, index) => (
           <div key={index} className="p-4 border rounded-lg bg-white">
-            <div className="flex justify-between mb-4">
+            <div className="flex md:flex-row flex-col justify-between mb-4">
               <div className='flex flex-col gap-2'>
                 <h2 className="text-lg font-semibold">{group.name}</h2>
                 <div className="text-sm text-gray-600">
@@ -243,13 +243,13 @@ const groups: StudentGroup[] = [
                 </div>
               </div>
 
-              <div className="flex gap-8">
-                <div className="space-y-4">
+              <div className="flex md:flex-row flex-col gap-8">
+                <div className=" flex flex-col gap-4">
                   <div className="flex items-center gap-2">
                     <h3 className="text-sm font-medium">Progress</h3>
                     <StatusBadge status={group.progress.status} />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 ">
                     <div>
                       <span className="text-sm text-gray-600">Academic</span>
                       <ProgressBar 
@@ -323,10 +323,10 @@ const groups: StudentGroup[] = [
       </div>
 
       <div className="flex p-6 bg-white border-t justify-between mt-6 fixed left-0 right-0 bottom-0">
-        <button className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
+        <button className="px-4 py-2 bg-red-600 text-sm text-white rounded-lg hover:bg-red-600">
           End lesson
         </button>
-        <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+        <button className="px-4 py-2 bg-primary text-sm text-white rounded-lg hover:bg-blue-600">
           Pause lesson
         </button>
       </div>

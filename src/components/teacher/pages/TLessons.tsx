@@ -64,12 +64,12 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
   };
 
   return (
-    <div className="p-6 w-[94%] flex flex-col gap-6">
-      <div className="flex justify-between items-center w-full">
+    <div className="md:p-6 p-4 md:w-[94%] flex flex-col gap-6">
+      <div className="flex md:flex-row flex-col justify-between md:items-center w-full">
         <h1 className="text-2xl font-bold">Lessons</h1>
         <Link
           href="/teacher/create-lesson"
-          className="bg-primary text-white px-4 py-2 rounded-md hover:bg-indigo-700"
+          className="bg-primary w-fit text-sm text-white px-4 py-2 rounded-md hover:bg-indigo-700"
         >
           Create Lesson
         </Link>
@@ -99,8 +99,8 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
       </div>
 
       <div className="flex flex-col gap-4 p-6 rounded-md bg-white ">
-        <div className="flex justify-between items-end  gap-4 ">
-          <div className="flex gap-4">
+        <div className="flex md:flex-row flex-col justify-between items-end  gap-4 ">
+          <div className="flex md:flex-row flex-col gap-4">
             <div className="">
               <label className="caption mb-1">Class</label>
               <select

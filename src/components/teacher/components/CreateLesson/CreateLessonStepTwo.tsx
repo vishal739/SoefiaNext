@@ -64,7 +64,7 @@ const sampleData: GroupData = {
 };
 
 const DetailRow = ({ icon, label, value, element }: DetailItem) => (
-  <div className="flex items-center gap-2 py-2 ">
+  <div className="flex md:flex-row flex-col md:items-center gap-2 py-2 ">
     {icon}
     <div className="flex gap-4 items-center">
       <div className="flex flex-col ">
@@ -174,15 +174,15 @@ export default function CreateLessonStepTwo({ setCompletionStep }: Props) {
         </section>
 
         {/* Lesson Plan Section */}
-        <section className="bg-white rounded-lg p-6 space-y-8">
-          <div className="flex justify-between items-center">
+        <section className="bg-white rounded-lg md:p-6 p-4 space-y-8">
+          <div className="flex md:flex-row flex-col justify-between md:items-center md:gap-0 gap-4">
             <div className="flex items-center gap-2">
               <h2 className="text-lg font-medium">Lesson plan</h2>
               <span className="w-5 h-5 flex items-center justify-center rounded-full bg-gray-100">
                 <Info />
               </span>
             </div>
-            <button className="text-primary text-sm hover:text-primary/80 px-4 py-2 rounded-lg border flex items-center gap-2">
+            <button className="text-primary w-fit text-sm hover:text-primary/80 px-4 py-2 rounded-lg border flex items-center gap-2">
               <Edit2 size={14} /> Edit lesson information
             </button>
           </div>
@@ -252,16 +252,16 @@ export default function CreateLessonStepTwo({ setCompletionStep }: Props) {
             <Repeat /> Try again: Create new preview
           </button>
         </section>
-        <GroupPreview groups={groups} onChange={setGroups} />
+    
 
         <div className="h-36" />
 
         {/* Footer */}
-        <div className="flex justify-between p-6 fixed bottom-0 right-0 left-0 w-full bg-white border-t shadow-md">
+        <div className="flex md:flex-row flex-col gap-4 justify-between p-6 fixed bottom-0 right-0 left-0 w-full bg-white border-t shadow-md">
           <button className="hover:text-gray-800 border px-4 py-2 rounded-lg text-sm font-semibold text-primary">
             Cancel
           </button>
-          <div className="space-x-4">
+          <div className="flex gap-4 md:justify-normal justify-between">
             <button className="text-primary px-4 text-sm py-2 rounded-lg border hover:text-primary/80">
               Save as draft
             </button>

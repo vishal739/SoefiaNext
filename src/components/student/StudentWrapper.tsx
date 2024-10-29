@@ -36,9 +36,7 @@ export default function StudentWrapper() {
     return (
       <LargeLayout selectedMainPage={returnContent(selectedPage ?? "home")} />
     );
-  } else if (width > 900) {
-    return <MediumLayout />;
-  } else {
-    return <SmallLayout />;
+   } else {
+    return <SmallLayout  selectedMainPage={returnContent(selectedPage ?? "home")} />;
   }
 }

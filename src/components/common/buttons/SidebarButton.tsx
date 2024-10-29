@@ -37,7 +37,7 @@ export default function SidebarButton({
       </div>
       <span
       className={twMerge(
-        "text-[12px] 2xl:text-[14px] text-center text-text-2 group-hover:text-primary 2xl:leading-[15px] leading-[14px]",
+        "text-[12px] 2xl:text-[14px] lg:block hidden text-center text-text-2 group-hover:text-primary 2xl:leading-[15px] leading-[14px]",
         isActive && "text-primary"
       )}
       >

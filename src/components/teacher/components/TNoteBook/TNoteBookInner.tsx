@@ -217,7 +217,7 @@ export default function TNoteBookInner({ selectedNoteBook }: Props) {
     };
 
     return (
-        <div className="p-6">
+        <div className="md:p-6 p-3">
             <div className="mb-8">
                 <h1 className="text-xl font-semibold mb-4">Algebra I, Block A</h1>
 
@@ -240,7 +240,7 @@ export default function TNoteBookInner({ selectedNoteBook }: Props) {
                     <div className="flex flex-col gap-4">
                         <div className="flex flex-col gap-2 bg-white rounded-lg p-6">
                             <h2 className="bodyBig">Lesson Summary</h2>
-                            <div className="grid grid-cols-3 gap-12">
+                            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12">
                                 <ProgressSection progress={lessonSummaryData.progress} />
                                 <EngagementSection engagement={lessonSummaryData.engagement} />
                                 <SocialPostureSection socialPosture={lessonSummaryData.socialPosture} />

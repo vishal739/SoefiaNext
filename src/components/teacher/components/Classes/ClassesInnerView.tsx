@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import LessonCardHorizontal from "@/components/common/cards/LessonCardHorizontal";
 import { ArrowRight, Pencil, Trash } from "@phosphor-icons/react";
 import TextAreaWithActions from "../CreateLesson/TextAreaWithActions";
+import Link from "next/link";
 
 // Temporary component for memory log items
 interface MemoryLogItemProps {
@@ -18,8 +19,8 @@ interface MemoryLogItemProps {
 }
 
 const MemoryLogItem: React.FC<MemoryLogItemProps> = ({ date, topic }) => (
-  <div className="flex items-center justify-between p-4 border-b">
-    <div className="flex items-center space-x-4">
+  <div className="flex flex-col md:flex-row items-start md:items-center justify-between md:p-4 p-2 border-b space-y-4 md:space-y-0">
+    <div className="flex flex-col md:flex-row items-start md:items-center space-y-2 md:space-y-0 md:space-x-4">
       <div className="bg-slate-100 p-2 rounded-lg">
         <Bookmark size={15} />
       </div>
@@ -36,7 +37,7 @@ const MemoryLogItem: React.FC<MemoryLogItemProps> = ({ date, topic }) => (
       <button className="text-primary p-2 rounded-lg border hover:bg-slate-200">
         <Trash />
       </button>
-      <button className="text-primary p-2 rounded-lg border  hover:bg-slate-200">
+      <button className="text-primary p-2 rounded-lg border hover:bg-slate-200">
         <Pencil />
       </button>
     </div>
@@ -97,11 +98,11 @@ export default function ClassesInnerView({ classId }: Props) {
   return (
     <div className="w-full p-6 space-y-8">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex md:flex-row flex-col justify-between md:items-center md:gap-0 gap-3">
         <h1 className="bodyBig">Algebra I, Block A</h1>
         <div className="flex gap-4">
           <Button variant="outline">Go to class notebook</Button>
-          <Button>Create Lesson</Button>
+          <Link href="/teacher/create-lesson" className="py-2 px-4 text-sm bg-primary rounded-lg text-white">Create Lesson</Link>
         </div>
       </div>
 
@@ -195,15 +196,15 @@ export default function ClassesInnerView({ classId }: Props) {
         </CardContent>
       </Card>
 
-      <div className="bg-white p-6 flex flex-col gap-2 rounded-lg">
+      <div className="bg-white md:p-6 p-4 flex flex-col gap-2 rounded-lg">
         {/* Automatic Review Section */}
-        <div className="flex justify-between items-center">
+        <div className="flex md:flex-row flex-col justify-between md:items-center gap-4">
           <div className="flex items-center gap-4">
             <h2 className="font-semibold">Automatic review</h2>
             <Switch />
             <span>On</span>
           </div>
-          <div className="relative">
+          <div className="relative max-w-full w-full md:w-fit">
             <Search
               className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
               size={16}

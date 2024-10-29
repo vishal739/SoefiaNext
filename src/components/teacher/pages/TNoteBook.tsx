@@ -7,7 +7,7 @@ const notebooks = ["ALgebra class a", "Notebook 2", "Notebook 3"];
 export default function TNoteBook() {
   const [selectedNotebook, setSelectedNotebook] = React.useState(notebooks[0]);
   return (
-    <div className="flex gap-2 ">
+    <div className="flex md:flex-row flex-col gap-2 ">
       <TNoteBookSidebar
         notebooks={notebooks}
         selectedNotebook={selectedNotebook}
