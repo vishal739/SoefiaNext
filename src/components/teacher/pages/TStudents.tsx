@@ -113,7 +113,7 @@ export default function TStudents() {
 
           <div className="p-6 rounded-lg bg-white">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold">DeITA's observations</h3>
+              <h3 className="text-lg font-semibold">DeITA&apos;s observations</h3>
             
             </div>
             <div className="space-y-4 bodySmall">

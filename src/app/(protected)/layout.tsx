@@ -1,4 +1,3 @@
-import { HelpCircle } from "lucide-react";
 
 export default function layout({
   children,

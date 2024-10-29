@@ -10,12 +10,14 @@ export default function CreateLesson() {
 
   const steps = [
     <CreateLessonStepOne
+    key={"CreateLessonStepOne"}
       pageId={page}
       setCompletionStep={() => {
         setCompletionStep(1);
       }}
     />,
     <CreateLessonStepTwo
+    key={"CreateLessonStepTwo"}
       setCompletionStep={() => {
         setCompletionStep(1);
       }}

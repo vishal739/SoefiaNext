@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -24,21 +23,25 @@ export default function SidebarButton({
   return (
     <div
       onClick={() => {
-        if (page === selector) return null;
-        isTeacher
-          ? router.push(`/teacher/?page=${selector}`)
-          : router.push(`/students/?page=${selector}`);
+      if (page === selector) return;
+      if (isTeacher) {
+        router.push(`/teacher/?page=${selector}`);
+      } else {
+        router.push(`/students/?page=${selector}`);
+      }
       }}
       className="flex flex-col items-center gap-1 justify-center cursor-pointer hover:text-primary group"
     >
-      <div  className={twMerge(page==selector?"text-primary":"", "text-[20px]")} >{iconUrl}</div>
+      <div className={twMerge(page == selector ? "text-primary" : "", "text-[20px]")}>
+      {iconUrl}
+      </div>
       <span
-        className={twMerge(
-          "text-[12px] 2xl:text-[14px] text-center text-text-2 group-hover:text-primary 2xl:leading-[15px] leading-[14px]",
-          isActive && "text-primary"
-        )}
+      className={twMerge(
+        "text-[12px] 2xl:text-[14px] text-center text-text-2 group-hover:text-primary 2xl:leading-[15px] leading-[14px]",
+        isActive && "text-primary"
+      )}
       >
-        {text}
+      {text}
       </span>
     </div>
   );

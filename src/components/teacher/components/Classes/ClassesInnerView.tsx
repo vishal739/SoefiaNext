@@ -1,13 +1,6 @@
 import React from "react";
 import {
-  Mic,
-  Link,
-  Upload,
   Search,
-  PlayIcon,
-  EditIcon,
-  Notebook,
-  MoreHorizontal,
   Bookmark,
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
