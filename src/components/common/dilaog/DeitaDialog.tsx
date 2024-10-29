@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { FileUp, Mic, Upload } from "lucide-react";
 import { Microphone, X } from "@phosphor-icons/react";
 
-interface DeltaDialogProps {
+interface DeitaDialogProps {
   description: string;
   onClose: () => void;
 }
 
-const DeltaDialog: React.FC<DeltaDialogProps> = ({ description, onClose }) => {
+const DeitaDialog: React.FC<DeitaDialogProps> = ({ description, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm ">
       <div className="bg-white p-6 rounded-lg border w-full max-w-lg flex flex-col gap-6 items-center relative">
@@ -15,7 +15,7 @@ const DeltaDialog: React.FC<DeltaDialogProps> = ({ description, onClose }) => {
             <X/>
         </button>
         <div className="flex flex-col items-center justify-center mb-4">
-          <h2 className="headline">Tell Delta</h2>
+          <h2 className="headline">Tell deiTa</h2>
           <p className="regular">{description}</p>
         </div>
 
@@ -30,4 +30,4 @@ const DeltaDialog: React.FC<DeltaDialogProps> = ({ description, onClose }) => {
   );
 };
 
-export default DeltaDialog;
+export default DeitaDialog;

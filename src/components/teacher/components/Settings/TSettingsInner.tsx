@@ -167,7 +167,7 @@ const TSettingsInner = () => {
               <div className="flex md:flex-row flex-col gap-4">
                 <button className="flex items-center gap-1 text-primary bg-[#E3E4FF] px-4 py-2 rounded-lg">
                   <Mic className="w-4 h-4" />
-                  <span className="text-sm">Tell Delta</span>
+                  <span className="text-sm">Tell deiTa</span>
                 </button>
                 <button className="flex items-center gap-1 text-primary px-4 py-2 border rounded-lg">
                   <Upload className="w-4 h-4" />

@@ -1,4 +1,5 @@
-import DeltaDialog from "@/components/common/dilaog/DeitaDialog";
+import DeitaDialog from "@/components/common/dilaog/DeitaDialog";
+import deiTaDialog from "@/components/common/dilaog/DeitaDialog";
 import { Microphone } from "@phosphor-icons/react";
 import { FileUp, Mic, Upload } from "lucide-react";
 import { useState } from 'react';
@@ -12,14 +13,14 @@ const TextAreaWithActions: React.FC<{
   onAddFiles:()=>void;
   description: string;
 }> = ({ label, placeholder, value, onChange, description,onAddFiles,onAddUrl }) => {
-  const [showDeltaDialog, setShowDeltaDialog] = useState(false);
+  const [showdeiTaDialog, setShowdeiTaDialog] = useState(false);
 
-  const handleTellDelta = () => {
-    setShowDeltaDialog(true);
+  const handleTelldeiTa = () => {
+    setShowdeiTaDialog(true);
   };
 
-  const handleDeltaDialogClose = () => {
-    setShowDeltaDialog(false);
+  const handledeiTaDialogClose = () => {
+    setShowdeiTaDialog(false);
   };
 
   return (
@@ -43,10 +44,10 @@ const TextAreaWithActions: React.FC<{
         <div className="flex md:flex-row flex-col gap-4 py-2">
           <button
             className="flex items-center gap-1 text-primary bg-[#E3E4FF] hover:text-primary/80 px-4 py-2   rounded-lg"
-            onClick={handleTellDelta}
+            onClick={handleTelldeiTa}
           >
             <Mic className="w-4 h-4" />
-            <span className="text-sm">Tell Delta</span>
+            <span className="text-sm">Tell deiTa</span>
           </button>
           <button onClick={onAddUrl} className="flex items-center gap-1 text-primary hover:text-primary/80 px-4 py-2 border rounded-lg border-[#DFDAD3]">
             <FileUp className="w-4 h-4" />
@@ -59,8 +60,8 @@ const TextAreaWithActions: React.FC<{
         </div>
       </div>
 
-      {showDeltaDialog && (
-        <DeltaDialog description={description} onClose={handleDeltaDialogClose} />
+      {showdeiTaDialog && (
+        <DeitaDialog description={description} onClose={handledeiTaDialogClose} />
       )}
     </div>
   );

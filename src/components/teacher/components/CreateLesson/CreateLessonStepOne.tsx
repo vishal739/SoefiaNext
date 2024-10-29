@@ -132,7 +132,7 @@ export default function CreateLessonStepOne({
           <div className="flex flex-col gap-1">
             <h2 className="bodyBig">Groups</h2>
             <p className="bodySmall">
-              To change how groups are organized, go to DeltA Preferences and
+              To change how groups are organized, go to deiTa Preferences and
               change group settings.
             </p>
           </div>
@@ -224,7 +224,7 @@ export default function CreateLessonStepOne({
             <div>
               <h2 className="bodyBig">Lesson plan</h2>
               <p className="bodySmall xl:max-w-[50%]">
-                Add information about your lesson. DeltA will analyze your input
+                Add information about your lesson. deiTa will analyze your input
                 and create a lesson plan in the next step. You can also upload a
                 file with an existing lesson plan
               </p>
@@ -305,7 +305,7 @@ export default function CreateLessonStepOne({
             <h3 className="text-sm font-medium mb-2">
               Materials{" "}
               <span className="text-gray-500">
-                (No need to add things you have provided DeltA already through
+                (No need to add things you have provided deiTa already through
                 the LMS)
               </span>
             </h3>
