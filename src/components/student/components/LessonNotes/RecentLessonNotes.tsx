@@ -1,5 +1,6 @@
 import RecentLessonCard from "@/components/common/cards/LessonNoteCard";
 import { ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const lessons = [
@@ -35,6 +36,7 @@ const lessons = [
 
 export default function RecentLessonNotes() {
   const toshowLessons = lessons.slice(0, 4);
+  const router = useRouter();
 
   return (
     <div className="bg-white rounded-md p-6 flex flex-col gap-6">
@@ -52,7 +54,9 @@ export default function RecentLessonNotes() {
           />
         ))}
 
-        <button className="w-fit px-4 flex items-center py-2 gap-2 border border-slate-400 rounded-md text-primary">
+        <button onClick={()=>{
+          router.push('/students/?page=lesson')
+        }} className="w-fit px-4 flex items-center py-2 gap-2 border border-slate-400 rounded-md text-primary">
           View All <ArrowRight />
         </button>
       </div>

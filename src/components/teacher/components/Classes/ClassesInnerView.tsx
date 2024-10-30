@@ -102,7 +102,9 @@ export default function ClassesInnerView({ classId }: Props) {
       <div className="flex md:flex-row flex-col justify-between md:items-center md:gap-0 gap-3">
         <h1 className="bodyBig">Algebra I, Block A</h1>
         <div className="flex gap-4">
-          <Button variant="outline">Go to class notebook</Button>
+          <Button onClick={()=>{
+            router.push("/teacher?page=notebook")
+          }} variant="outline">Go to class notebook</Button>
           <Link href="/teacher/create-lesson" className="py-2 px-4 text-sm bg-primary rounded-lg text-white">Create Lesson</Link>
         </div>
       </div>
@@ -236,7 +238,10 @@ export default function ClassesInnerView({ classId }: Props) {
             </div>
           </div>
           <Button
-            variant="link"
+            variant="outline"
+            onClick={()=>{
+              router.push("/teacher?page=lesson")
+            }}
             className="mt-4 w-fit px-4 py-2 rounded-lg border text-primary"
           >
             See upcoming lessons
@@ -251,7 +256,10 @@ export default function ClassesInnerView({ classId }: Props) {
                 ))}
               </div>
               <Button
-                variant="link"
+               onClick={()=>{
+                router.push("/teacher?page=lesson")
+              }}
+                variant="outline"
                 className="mt-4 w-fit px-4 py-2 rounded-lg border text-primary"
               >
                 See recently completed lessons
