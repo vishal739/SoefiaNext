@@ -85,9 +85,12 @@ interface GroupPreviewProps {
   onChange?: (newGroups: GroupData) => void;
 }
 
-const GroupPreview: React.FC<GroupPreviewProps> = ({ groups, onChange }) => {
+const GroupPreview: React.FC<GroupPreviewProps> = ({ groups: initialGroups, onChange }) => {
+  // Keep track of both temporary and committed states
+  const [tempGroups, setTempGroups] = useState<GroupData>(initialGroups);
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
   const [draggedStudent, setDraggedStudent] = useState<GroupMember | null>(null);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -101,14 +104,14 @@ const GroupPreview: React.FC<GroupPreviewProps> = ({ groups, onChange }) => {
   );
 
   const findGroupAndStudent = useCallback((id: UniqueIdentifier): [string | undefined, GroupMember | undefined] => {
-    for (const [groupName, students] of Object.entries(groups)) {
+    for (const [groupName, students] of Object.entries(tempGroups)) {
       const student = students.find(s => s.id === id);
       if (student) {
         return [groupName, student];
       }
     }
     return [undefined, undefined];
-  }, [groups]);
+  }, [tempGroups]);
 
   const handleDragStart = (event: DragStartEvent) => {
     const [, student] = findGroupAndStudent(event.active.id);
@@ -136,20 +139,21 @@ const GroupPreview: React.FC<GroupPreviewProps> = ({ groups, onChange }) => {
 
     if (activeGroupName === overGroupName) {
       // Same group - just reorder
-      const items = [...groups[activeGroupName]];
+      const items = [...tempGroups[activeGroupName]];
       const oldIndex = items.findIndex(item => item.id === active.id);
       const newIndex = items.findIndex(item => item.id === over.id);
 
       if (oldIndex !== newIndex) {
         const newGroups = {
-          ...groups,
+          ...tempGroups,
           [activeGroupName]: arrayMove(items, oldIndex, newIndex),
         };
-        onChange?.(newGroups);
+        setTempGroups(newGroups);
+        setHasUnsavedChanges(true);
       }
     } else {
       // Different groups - move item
-      const newGroups = { ...groups };
+      const newGroups = { ...tempGroups };
       const activeItems = [...newGroups[activeGroupName]];
       const overItems = [...newGroups[overGroupName]];
       
@@ -162,12 +166,24 @@ const GroupPreview: React.FC<GroupPreviewProps> = ({ groups, onChange }) => {
       newGroups[activeGroupName] = activeItems;
       newGroups[overGroupName] = overItems;
       
-      onChange?.(newGroups);
+      setTempGroups(newGroups);
+      setHasUnsavedChanges(true);
     }
 
     setActiveId(null);
     setDraggedStudent(null);
   };
+
+  const handleSave = () => {
+    onChange?.(tempGroups);
+    setHasUnsavedChanges(false);
+  };
+
+  // Update temporary state when props change
+  React.useEffect(() => {
+    setTempGroups(initialGroups);
+    setHasUnsavedChanges(false);
+  }, [initialGroups]);
 
   return (
     <DndContext
@@ -177,18 +193,17 @@ const GroupPreview: React.FC<GroupPreviewProps> = ({ groups, onChange }) => {
       onDragEnd={handleDragEnd}
       modifiers={[restrictToWindowEdges]}
     >
-      <div className="md:p-6 p-2 flex flex-col gap-1 w-full ">
+      <div className="md:p-6 p-2 flex flex-col gap-1 w-full">
         <div className="flex justify-between items-center">
           <h2 className="headline">Group preview</h2>
-        
         </div>
         <p className="caption">
           You can rearrange students in groups by grabbing a students card and
-          dragging it to a different group.
+          dragging it to a different group. Changes won&apos;t be saved until you click the Save button.
         </p>
 
         <div className="flex flex-col gap-4">
-          {Object.entries(groups).map(([groupName, students]) => (
+          {Object.entries(tempGroups).map(([groupName, students]) => (
             <div key={groupName} className="space-y-4 flex md:flex-row flex-col md:items-center md:gap-6 border-b py-2">
               <h3 className="label">{groupName}</h3>
               <div>
@@ -216,6 +231,19 @@ const GroupPreview: React.FC<GroupPreviewProps> = ({ groups, onChange }) => {
             <DraggableCard student={draggedStudent} />
           ) : null}
         </DragOverlay>
+        <div className="flex justify-end py-2">
+          <button 
+            className={`px-4 py-2 rounded-lg text-sm ${
+              hasUnsavedChanges 
+                ? 'bg-primary text-white' 
+                : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+            }`}
+            onClick={handleSave}
+            disabled={!hasUnsavedChanges}
+          >
+            {hasUnsavedChanges ? 'Save Changes' : 'No Changes'}
+          </button>
+        </div>
       </div>
     </DndContext>
   );
