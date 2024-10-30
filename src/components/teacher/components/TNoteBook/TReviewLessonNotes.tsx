@@ -71,11 +71,12 @@ const TReviewLessonNote = () => {
           classname="Algebra | Block A"
           topic="Basic function transformations"
           launchLessonLink="#"
+          reviewLesson="/"
         />
       </div>
 
       {/* Progress Section */}
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-3 gap-8">
         <div className="space-y-4">
           <h3 className="font-medium">Progress</h3>
           <div className="space-y-2">
@@ -195,14 +196,14 @@ const TReviewLessonNote = () => {
 
       {/* Groups Section */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex  flex-col">
           <h3 className="font-medium">Groups</h3>
-          <button className="text-sm text-gray-600">
+          <button className="text-sm text-gray-600 w-fit">
             Select a group to drill down
           </button>
         </div>
 
-        <div className="flex gap-4 mb-4">
+        <div className="flex flex-col md:flex-row gap-4 mb-4">
           <div className="relative flex-1 max-w-xs">
             <input
               type="text"
@@ -223,7 +224,7 @@ const TReviewLessonNote = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-4">
           <GroupCard
             name="Group A"
             students={["J Brissel", "J Davison", "S Hauser"]}

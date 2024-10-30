@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 
 const GroupDashboard = () => {
   const [selectedGroup, setSelectedGroup] = useState("Group C");
   const [selectedMembers, setSelectedMembers] = useState<string[]>([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const groups = [
     "Group A",
@@ -33,11 +34,21 @@ const GroupDashboard = () => {
   };
 
   return (
-    <div className="bg-white/80 flex items-start justify-center">
-      <div className="w-full rounded-lg flex justify-between h-full">
+    <div className="bg-white/80 flex  items-start justify-center">
+      <div className="w-full rounded-lg flex md:flex-row flex-col justify-between h-full">
         {/* Sidebar */}
-        <div className="w-48 border-r  flex flex-col justify-between ">
+        <button className="w-fit pl-3 flex items-center gap-2 md:hidden" onClick={()=>{
+            setIsSidebarOpen(!isSidebarOpen)
+          }}>
+            Groups  <ChevronDown/>
+          </button>
+        <div
+          className={`md:w-48 border-r flex flex-col justify-between transition-all duration-300 ${
+            isSidebarOpen ? "md:block block" : "md:block hidden"
+          }`}
+        >
          <div className="flex flex-col gap-4">
+          
          {groups.map((group) => (
             <button
               key={group}
@@ -52,12 +63,7 @@ const GroupDashboard = () => {
             </button>
           ))}
          </div>
-          <div className="pt-4">
-            <button className="flex items-center text-primary py-2 px-4">
-              <span>Close groups</span>
-              <X className="w-4 h-4 ml-2" />
-            </button>
-          </div>
+         
         </div>
 
         {/* Main content */}
@@ -70,7 +76,7 @@ const GroupDashboard = () => {
           <div className="mb-8">
             <h3 className="text-sm font-medium mb-2">Select</h3>
           
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid md:grid-cols-4 grid-cols-2 gap-4">
               {members.map((member) => (
                 <button
                   key={member.name}
@@ -93,7 +99,7 @@ const GroupDashboard = () => {
             <h3 className="font-medium mb-4">
               Lesson, Engagement, and Collaboration Summary
             </h3>
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8">
               {/* Progress */}
               <div>
                 <h4 className="text-sm text-gray-600 mb-4">Progress</h4>
