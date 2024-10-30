@@ -22,7 +22,7 @@ export default function LessonCardHorizontal({
 
   return (
     <div
-      className={`flex flex-col md:flex-row items-start md:items-center justify-between bg-white rounded-lg p-4 border border-[#DFDAD3] ${
+      className={`flex flex-col md:flex-row hover:border-slate-500 cursor-pointer transition-colors hover:shadow-md items-start md:items-center justify-between bg-white rounded-lg p-4 border border-[#DFDAD3] ${
         isToday ? "border-l-8 border-l-[#DFDAD3]" : ""
       }`}
     >

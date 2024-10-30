@@ -22,7 +22,7 @@ export default function ClassSideBarMobile({
   return (
     <div className="border-b lg:w-[300px] w-full px-3 py-3">
       <button
-        className="w-full flex items-center justify-between px-4 py-2"
+        className="w-full md:hidden flex items-center justify-between px-4 py-2"
         onClick={toggleDropdown}
       >
         <span className="font-semibold text-sm text-gray-600">
@@ -30,11 +30,12 @@ export default function ClassSideBarMobile({
         </span>
         <ChevronDown
           size={20}
-          className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`transition-transform  ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
+      <span className="md:block hidden">Classes</span>
       {isOpen && (
-        <div className="flex flex-col gap-2 py-2">
+        <div className="flex md:hidden flex-col gap-2 py-2">
           {classes.map((cls) => (
             <button
               key={cls}
@@ -54,6 +55,25 @@ export default function ClassSideBarMobile({
           ))}
         </div>
       )}
+      <div className="md:flex hidden  flex-col gap-2 py-2">
+          {classes.map((cls) => (
+            <button
+              key={cls}
+              onClick={() => {
+                onClassChange(cls);
+                setIsOpen(false);
+              }}
+              className={twMerge(
+                "w-full flex items-center justify-between px-4 py-2",
+                selectedClass === cls
+                  ? "border-b-primary border-b-2 text-primary"
+                  : "border-b-[#10121C14] border-b-2 text-gray-600"
+              )}
+            >
+              <span className="font-semibold text-sm">{cls}</span>
+            </button>
+          ))}
+        </div>
     </div>
   );
 }

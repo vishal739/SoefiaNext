@@ -95,6 +95,34 @@ export default function ClassesInnerView({ classId }: Props) {
     },
   ];
 
+
+  const recentlyCompleted: LessonNote[] = [
+    {
+      day: "25",
+      dayOfWeek: "Wed",
+      lessonDate: "2024-09-25",
+      launchLessonLink: "/teacher/live-lesson",
+      classname: "Class 3",
+      topic: "Topic 45",
+    },
+    {
+      day: "20",
+      dayOfWeek: "Fri",
+      lessonDate: "2024-09-20",
+      launchLessonLink: "/teacher/live-lesson",
+      classname: "Class 6",
+      topic: "Topic 23",
+    },
+    {
+      day: "15",
+      dayOfWeek: "Sun",
+      lessonDate: "2024-09-15",
+      launchLessonLink: "/teacher/live-lesson",
+      classname: "Class 1",
+      topic: "Topic 10",
+    },
+  ];
+
   return (
     <div className="w-full p-6 space-y-8">
       {/* Header */}
@@ -242,7 +270,7 @@ export default function ClassesInnerView({ classId }: Props) {
             <div>
               <h3 className="text-sm font-medium mb-2">Recently Completed</h3>
               <div className="space-y-2">
-                {upcomingLessons.map((lesson, index) => (
+                {recentlyCompleted.map((lesson, index) => (
                   <LessonCardHorizontal key={index} {...lesson} />
                 ))}
               </div>

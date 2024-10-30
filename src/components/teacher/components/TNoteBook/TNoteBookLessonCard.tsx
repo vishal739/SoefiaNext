@@ -1,8 +1,9 @@
 import SmallProgressIndicator from "@/components/common/Indicators/SmallProgressIndicator";
 import StatusBadge from "@/components/common/Indicators/StatusBadge";
 import { ChatCenteredDots, Note } from "@phosphor-icons/react";
+import { useRouter } from "next/navigation";
 
-const TNoteBookLessonNote = ({
+export default function TNoteBookLessonNote({
     date,
     title,
     metrics,
@@ -16,8 +17,10 @@ const TNoteBookLessonNote = ({
       interactLevel: string;
       interactRelevance: number;
     };
-  }) => (
-    <div className="flex flex-col md:flex-row items-start gap-4 p-6 border rounded-lg w-full">
+  }){
+    const router = useRouter();
+    
+   return  <div className="flex flex-col md:flex-row items-start gap-4 p-6 border rounded-lg w-full">
       <div className="bg-slate-100 p-2 rounded-lg">
         <Note />
       </div>
@@ -73,10 +76,11 @@ const TNoteBookLessonNote = ({
           </div>
         </div>
       </div>
-      <button className="text-primary hover:bg-blue-50 flex gap-2 items-center px-4 py-2 rounded-lg border text-sm font-semibold">
+      <button onClick={()=>{
+        router.push("/teacher?page=review")
+      }} className="text-primary hover:bg-blue-50 flex gap-2 items-center px-4 py-2 rounded-lg border text-sm font-semibold">
         <ChatCenteredDots /> Review
       </button>
     </div>
-  );
+  }
 
-  export default TNoteBookLessonNote;

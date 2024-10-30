@@ -1,3 +1,4 @@
+"use client"
 import { ChevronRight } from "lucide-react";
 import React, { useState } from "react";
 import TNoteBookLessonNote from "./TNoteBookLessonCard";
@@ -106,6 +107,7 @@ export default function TNoteLessonNotes() {
         ? dateB.getTime() - dateA.getTime()
         : dateA.getTime() - dateB.getTime();
     });
+
 
   return (
     <div className="flex flex-col gap-2 md:p-6 p-3 bg-white rounded-lg">
