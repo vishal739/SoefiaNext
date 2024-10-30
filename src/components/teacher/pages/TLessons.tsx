@@ -5,6 +5,7 @@ import { camelCaseToTwoLetters } from "@/lib/formatter/camelCaseToTwoLetters";
 import LessonCardHorizontal from "@/components/common/cards/LessonCardHorizontal";
 import LessonCard from "@/components/common/cards/LessonCard";
 import groupLessonsByTime from "@/lib/utils/grouping";
+import dynamic from "next/dynamic";
 
 type TabType = "upcoming" | "completed";
 type ViewType = "grid" | "list";
@@ -258,7 +259,7 @@ const TLessons: React.FC<TLessonsProps> = ({ initialLessons = [] }) => {
   );
 };
 
-export default TLessons;
+export default dynamic(() => Promise.resolve(TLessons), {ssr: false});
 
 interface LessonNote {
   day: string;
