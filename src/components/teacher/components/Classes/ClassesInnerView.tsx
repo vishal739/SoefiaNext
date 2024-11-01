@@ -11,38 +11,10 @@ import LessonCardHorizontal from "@/components/common/cards/LessonCardHorizontal
 import { ArrowRight, Pencil, Trash } from "@phosphor-icons/react";
 import TextAreaWithActions from "../CreateLesson/TextAreaWithActions";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import MemoryLogItem from "./MemoryLogItem";
 
-// Temporary component for memory log items
-interface MemoryLogItemProps {
-  date: string;
-  topic: string;
-}
 
-const MemoryLogItem: React.FC<MemoryLogItemProps> = ({ date, topic }) => (
-  <div className="flex flex-col md:flex-row items-start md:items-center justify-between md:p-4 p-2 border-b space-y-4 md:space-y-0">
-    <div className="flex flex-col md:flex-row items-start md:items-center space-y-2 md:space-y-0 md:space-x-4">
-      <div className="bg-slate-100 p-2 rounded-lg">
-        <Bookmark size={15} />
-      </div>
-      <div>
-        <div className="caption">LOG DATE</div>
-        <div className="text-sm">{date}</div>
-      </div>
-      <div>
-        <div className="caption">LOG TOPIC</div>
-        <div className="text-sm font-semibold">{topic}</div>
-      </div>
-    </div>
-    <div className="flex items-center space-x-2">
-      <button className="text-primary p-2 rounded-lg border hover:bg-slate-200">
-        <Trash />
-      </button>
-      <button className="text-primary p-2 rounded-lg border hover:bg-slate-200">
-        <Pencil />
-      </button>
-    </div>
-  </div>
-);
 
 interface Props {
   classId: string;
@@ -50,6 +22,7 @@ interface Props {
 export default function ClassesInnerView({ classId }: Props) {
   const [isAddFiles, setIsAddFiles] = React.useState(false);
   const [isAddUrl, setIsAddUrls] = React.useState(false);
+  const router = useRouter();
 
   const memoryLogs = [
     { date: "4 Oct 24", topic: "Standard Deviations" },
@@ -129,7 +102,9 @@ export default function ClassesInnerView({ classId }: Props) {
       <div className="flex md:flex-row flex-col justify-between md:items-center md:gap-0 gap-3">
         <h1 className="bodyBig">Algebra I, Block A</h1>
         <div className="flex gap-4">
-          <Button variant="outline">Go to class notebook</Button>
+          <Button onClick={()=>{
+            router.push("/teacher?page=notebook")
+          }} variant="outline">Go to class notebook</Button>
           <Link href="/teacher/create-lesson" className="py-2 px-4 text-sm bg-primary rounded-lg text-white">Create Lesson</Link>
         </div>
       </div>
@@ -218,7 +193,10 @@ export default function ClassesInnerView({ classId }: Props) {
           {memoryLogs.map((log, index) => (
             <MemoryLogItem key={index} {...log} />
           ))}
-          <button className="px-4 flex items-center gap-2 py-2 text-primary rounded-lg border mt-4">
+          <button onClick={()=>{
+
+            router.push("/teacher?page=logs")
+          }} className="px-4 flex items-center gap-2 py-2 text-primary rounded-lg border mt-4">
             See All <ArrowRight />
           </button>
         </CardContent>
@@ -260,7 +238,10 @@ export default function ClassesInnerView({ classId }: Props) {
             </div>
           </div>
           <Button
-            variant="link"
+            variant="outline"
+            onClick={()=>{
+              router.push("/teacher?page=lesson")
+            }}
             className="mt-4 w-fit px-4 py-2 rounded-lg border text-primary"
           >
             See upcoming lessons
@@ -275,7 +256,10 @@ export default function ClassesInnerView({ classId }: Props) {
                 ))}
               </div>
               <Button
-                variant="link"
+               onClick={()=>{
+                router.push("/teacher?page=lesson")
+              }}
+                variant="outline"
                 className="mt-4 w-fit px-4 py-2 rounded-lg border text-primary"
               >
                 See recently completed lessons

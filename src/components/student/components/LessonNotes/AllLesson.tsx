@@ -31,6 +31,27 @@ const lessons = [
     keyConcept: "Newton's three laws of motion",
     lessonNotesLink: "120012",
   },
+{
+  noteDate: "8 Oct 24",
+  classname: "Chemistry, Block E",
+  lessonGoal: "Periodic Table",
+  keyConcept: "Understanding the periodic table",
+  lessonNotesLink: "120013",
+},
+{
+  noteDate: "9 Oct 24",
+  classname: "Biology, Block F",
+  lessonGoal: "Cell Structure",
+  keyConcept: "Understanding cell structure",
+  lessonNotesLink: "120014",
+},
+{
+  noteDate: "10 Oct 24",
+  classname: "History, Block G",
+  lessonGoal: "World War II",
+  keyConcept: "Causes and effects of World War II",
+  lessonNotesLink: "120015",
+}
 ];
 
 export default function AllLesson() {

@@ -1,5 +1,6 @@
 import { Play, Edit2Icon, Copy, FileText } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export interface LessonCardProps {
   lesson: LessonNote;
@@ -11,6 +12,8 @@ const LessonCard: React.FC<LessonCardProps> = ({ lesson, isDraft = false }) => {
   const lessonDate = new Date(lesson.lessonDate);
   const isToday = lessonDate.toDateString() === today.toDateString();
   const isFuture = lessonDate > today;
+  const router = useRouter();
+
 
   return (
     <div className="p-6 border rounded-lg shadow-sm">
@@ -67,7 +70,9 @@ const LessonCard: React.FC<LessonCardProps> = ({ lesson, isDraft = false }) => {
         <div className="flex gap-4 pt-2">
           <button
             className="flex items-center gap-2 border rounded-md px-4 py-2 border-[#DFDAD3] text-primary hover:bg-[#5458c918] transition-colors"
-            onClick={() => console.log("Edit lesson", lesson)}
+            onClick={() => {
+              router.push(`/teacher/create-lesson`);
+            }}
           >
             <Edit2Icon size={14} />
             <span className="text-sm">Edit lesson</span>

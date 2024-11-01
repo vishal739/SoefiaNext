@@ -22,7 +22,7 @@ const VoiceTestDialog: React.FC<VoiceTestDialogProps> = ({
         isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      <div className="bg-white p-6 rounded-lg w-full max-w-2xl border flex flex-col gap-3 items-center justify-center sm:p-4 sm:max-w-md">
+      <div className="bg-white p-6 rounded-lg w-full min-w-[40%]  border flex flex-col gap-3 items-center justify-center sm:p-4 sm:max-w-md">
         <h2 className="headline text-center">Voice Sample Needed</h2>
         <p className="text-sm text-gray-500 text-center">
           We want to ask you for a voice sample, so we can recognize you in

@@ -5,4 +5,5 @@ interface LessonNote {
     classname: string;
     topic: string;
     launchLessonLink: string;
+    reviewLesson?:string;
   }

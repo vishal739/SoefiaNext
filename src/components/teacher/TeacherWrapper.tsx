@@ -12,6 +12,7 @@ import TNoteBook from "./pages/TNoteBook";
 import generateSampleLessons from "@/lib/sample/generateLessons";
 import TSettings from "./pages/TSettings";
 import TReviewLessonNote from "./components/TNoteBook/TReviewLessonNotes";
+import AllMemoryLogs from "./components/Classes/AllMemoryLogs";
 
 const main_pages = [
   <TLessons key={"lessons-t"} initialLessons={generateSampleLessons(200)} />,
@@ -19,7 +20,8 @@ const main_pages = [
   <TStudents key={"students-t"} />,
   <TNoteBook key={"notebook-t"} />,
   <TSettings key={"settings-t"} />,
-  <TReviewLessonNote key={"unknwon"} />
+  <TReviewLessonNote key={"unknwon"} />,
+  <AllMemoryLogs key={"memory"} />
 ];
 
 function returnContent(page: string, lessonId?: string): React.JSX.Element {
@@ -36,6 +38,8 @@ function returnContent(page: string, lessonId?: string): React.JSX.Element {
       return main_pages[4];
     case "review":
       return main_pages[5];
+    case "logs":
+      return main_pages[6];
 
     default:
       return main_pages[0];
